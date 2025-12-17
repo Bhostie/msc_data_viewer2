@@ -104,6 +104,16 @@
                                 <i class="bi bi-trash"></i> Mark ALL for Deletion
                             </button>
                             
+                            <div class="btn-group ms-2">
+                                <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="bi bi-download"></i> Export
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ url_for('export_data', format='csv') }}">CSV</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('export_data', format='json') }}">JSON</a></li>
+                                </ul>
+                            </div>
+
                             <span class="conditional-buttons" {% if deleted_count == 0 %}style="display: none;"{% endif %}>
                                 <form method="post" action="{{ url_for('download_filtered_db') }}" style="display: inline;">
                                     <button type="submit" class="btn btn-success btn-sm">

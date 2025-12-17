@@ -10,16 +10,16 @@ To run this app:
 
 import os
 import sqlite3
+import shutil
 import json
-import pandas as pd
+import hashlib
+from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
-from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify, session, Response
+from typing import Dict, List, Optional
+import pandas as pd
+import numpy as np
+from flask import Flask, render_template, request, redirect, url_for, flash, send_file, jsonify, session
 from werkzeug.utils import secure_filename
-
-# Import modules
-from database import list_tables, table_columns, detect_keyboard_table, detect_pk_column, guess_columns
-from segmentation import segment_keystrokes
-from utils import ms_to_local_str, save_segments_cache, load_segments_cache
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
@@ -34,6 +34,288 @@ os.makedirs(app.config['FILTERED_FOLDER'], exist_ok=True)
 os.makedirs(app.config['CACHE_FOLDER'], exist_ok=True)
 
 ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
+
+# -------- Database Helper Functions --------
+
+def list_tables(conn: sqlite3.Connection) -> List[str]:
+    """List all tables in the database."""
+    cur = conn.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    return [r[0] for r in cur.fetchall()]
+
+def table_columns(conn: sqlite3.Connection, table: str) -> List[str]:
+    """Get column names for a table."""
+    cur = conn.execute(f"PRAGMA table_info('{table}')")
+    return [r[1] for r in cur.fetchall()]
+
+def detect_keyboard_table(conn: sqlite3.Connection) -> Optional[str]:
+    """Detect the most likely keyboard data table."""
+    candidates = list_tables(conn)
+    # Common AWARE plugin names
+    preferred = [
+        "plugin_keyboard",
+        "keyboard",
+        "aware_keyboard",
+        "applications_keyboard",
+    ]
+    for p in preferred:
+        if p in candidates:
+            return p
+    # Fallback: pick any table that has likely keyboard columns
+    for t in candidates:
+        cols = set(table_columns(conn, t))
+        if {"timestamp"}.intersection(cols) and {"key_code", "key_character", "text"}.intersection(cols):
+            return t
+    return candidates[0] if candidates else None
+
+def detect_pk_column(conn: sqlite3.Connection, table: str) -> str:
+    """Detect the primary key column."""
+    cols = set(table_columns(conn, table))
+    for c in ["_id", "id", "ID"]:
+        if c in cols:
+            return c
+    return "rowid"
+
+def guess_columns(cols: List[str]) -> Dict[str, Optional[str]]:
+    """Attempt to map standard column names to found columns."""
+    lower = {c.lower(): c for c in cols}
+    
+    def pick(*names):
+        for n in names:
+            if n in lower:
+                return lower[n]
+        return None
+    
+    mapping = {
+        "timestamp": pick("timestamp", "time", "ts"),
+        "key_code": pick("key_code", "code", "keycode"),
+        "key_character": pick("key_character", "character", "char", "key_char", "unicode"),
+        "text": pick("text", "current_text", "message", "content", "field_text"),
+        "package": pick("package_name", "package", "app", "application", "app_package"),
+        "label": pick("label", "field", "hint", "view_label"),
+        "action": pick("key_action", "action", "event"),
+    }
+    return mapping
+
+def ms_to_local_str(ms: int, tz=ISTANBUL_TZ) -> str:
+    """Convert millisecond timestamp to local time string."""
+    try:
+        dt = datetime.fromtimestamp(ms/1000.0, tz=timezone.utc).astimezone(tz)
+        return dt.strftime("%Y-%m-%d %H:%M:%S")
+    except Exception:
+        # maybe already in seconds
+        try:
+            dt = datetime.fromtimestamp(int(ms), tz=timezone.utc).astimezone(tz)
+            return dt.strftime("%Y-%m-%d %H:%M:%S")
+        except Exception:
+            return str(ms)
+
+# -------- Cache Helper Functions --------
+
+def get_cache_key():
+    """Generate a cache key for the current database."""
+    db_path = get_db_path()
+    if not db_path:
+        return None
+    # Use db path + modification time as key
+    try:
+        mtime = os.path.getmtime(db_path)
+        key_str = f"{db_path}:{mtime}"
+        return hashlib.md5(key_str.encode()).hexdigest()
+    except Exception:
+        return None
+
+def save_segments_cache(segments):
+    """Save segments to a file instead of session."""
+    cache_key = get_cache_key()
+    if not cache_key:
+        return
+    cache_file = os.path.join(app.config['CACHE_FOLDER'], f"{cache_key}.json")
+    try:
+        with open(cache_file, 'w') as f:
+            json.dump(segments, f)
+        session['segments_cache_key'] = cache_key
+    except Exception as e:
+        print(f"Error saving segments cache: {e}")
+
+def load_segments_cache():
+    """Load segments from file instead of session."""
+    cache_key = session.get('segments_cache_key')
+    if not cache_key:
+        return None
+    cache_file = os.path.join(app.config['CACHE_FOLDER'], f"{cache_key}.json")
+    if not os.path.exists(cache_file):
+        return None
+    try:
+        with open(cache_file, 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading segments cache: {e}")
+        return None
+
+# -------- Segmentation Logic --------
+
+def segment_keystrokes(df: pd.DataFrame, cfg, *,
+                       enter_codes={66}, backspace_codes={67},
+                       use_ime_actions=True, ime_submit={2,3,4,6},
+                       finalize_on_context_change=True, gap_seconds=10):
+    """Segment keystrokes into meaningful text messages."""
+    ts_col = cfg.get("timestamp")
+    code_col = cfg.get("key_code") if cfg.get("key_code") in df.columns else None
+    char_col = cfg.get("key_character") if cfg.get("key_character") in df.columns else None
+    text_col = cfg.get("text") if cfg.get("text") in df.columns else None
+    pkg_col = cfg.get("package") if cfg.get("package") in df.columns else None
+    lbl_col = cfg.get("label") if cfg.get("label") in df.columns else None
+    act_col = cfg.get("action") if cfg.get("action") in df.columns else None
+    pk_col = cfg.get("pk", "rowid")
+
+    if not ts_col or ts_col not in df.columns:
+        ts_col = pk_col
+
+    # Sort stable by (timestamp, pk)
+    df = df.sort_values([ts_col, pk_col]).reset_index(drop=True)
+
+    segments = []
+    buf_chars = []
+    last_text_snapshot = ""
+    current_rows = []
+    seg_start_ts = None
+    last_pkg = None
+    last_lbl = None
+    last_ts_val = None
+
+    def end_segment(end_ts):
+        nonlocal buf_chars, last_text_snapshot, current_rows, seg_start_ts
+        if not current_rows:
+            buf_chars.clear()
+            last_text_snapshot = ""
+            seg_start_ts = None
+            return
+        
+        # Prefer text snapshot if meaningful
+        final_txt = (last_text_snapshot or "").strip()
+        if not final_txt:
+            final_txt = "".join(buf_chars).strip()
+        
+        if final_txt:
+            # Determine package/label from the segment's rows (use the last row's context)
+            seg_pkg = None
+            seg_lbl = None
+            if current_rows:
+                last_row = current_rows[-1]
+                if pkg_col: seg_pkg = last_row.get(pkg_col)
+                if lbl_col: seg_lbl = last_row.get(lbl_col)
+
+            segments.append({
+                "text": final_txt,
+                "start_ts": seg_start_ts if seg_start_ts is not None else current_rows[0][ts_col],
+                "end_ts": end_ts,
+                "row_ids": [r[pk_col] for _, r in pd.DataFrame(current_rows).iterrows()],
+                "package": seg_pkg,
+                "label": seg_lbl,
+                "time_str": ms_to_local_str(int(end_ts)) if isinstance(end_ts, (int, float, np.integer)) else str(end_ts)
+            })
+        
+        # reset
+        buf_chars.clear()
+        last_text_snapshot = ""
+        current_rows = []
+        seg_start_ts = None
+
+    def to_int_or_none(x):
+        try:
+            return int(x)
+        except Exception:
+            return None
+
+    for _, row in df.iterrows():
+        cur_ts = row[ts_col]
+        
+        # --- 1. Check Start-of-Segment Triggers (Gap, Context Change, Text Jump) ---
+        should_split_before = False
+        
+        # Gap Check
+        if gap_seconds and last_ts_val is not None:
+            try:
+                dt_ms = float(cur_ts) - float(last_ts_val)
+                if dt_ms > gap_seconds * 1000:
+                    should_split_before = True
+            except Exception:
+                pass
+        
+        # Context Change Check
+        if finalize_on_context_change:
+            if pkg_col and last_pkg is not None and row[pkg_col] != last_pkg:
+                should_split_before = True
+            if lbl_col and last_lbl is not None and row[lbl_col] != last_lbl:
+                should_split_before = True
+
+        # Text Jump Check (Heuristic for missing Enter/Clear)
+        if text_col and isinstance(row[text_col], str):
+            curr_txt = row[text_col].strip()
+            prev_txt = (last_text_snapshot or "").strip()
+            # If text goes from long (>2 chars) to 1 char, and that 1 char is NOT the start of prev text
+            if len(prev_txt) > 2 and len(curr_txt) == 1 and not prev_txt.startswith(curr_txt):
+                should_split_before = True
+
+        if should_split_before and (buf_chars or (last_text_snapshot and last_text_snapshot.strip())):
+             end_segment(last_ts_val)
+
+        # --- 2. Add Row to Current Segment ---
+        if seg_start_ts is None:
+            seg_start_ts = cur_ts
+        current_rows.append(row)
+        
+        # Update trackers
+        last_ts_val = cur_ts
+        if pkg_col: last_pkg = row[pkg_col]
+        if lbl_col: last_lbl = row[lbl_col]
+
+        # --- 3. Update Content State ---
+        prev_text_snapshot = last_text_snapshot
+        if text_col and isinstance(row[text_col], str):
+            last_text_snapshot = row[text_col]
+        
+        if char_col and isinstance(row[char_col], str) and len(row[char_col]) == 1:
+            ch = row[char_col]
+            if ch not in ["\n", "\r"]:
+                buf_chars.append(ch)
+
+        if code_col:
+            code = to_int_or_none(row[code_col])
+            if code in backspace_codes and buf_chars:
+                buf_chars.pop()
+
+        # --- 4. Check End-of-Segment Triggers (Enter, IME, Text Cleared) ---
+        should_split_after = False
+        
+        # Enter Key
+        if code_col:
+            code = to_int_or_none(row[code_col])
+            if code in enter_codes:
+                should_split_after = True
+        
+        # Newline char
+        if char_col and isinstance(row[char_col], str) and row[char_col] in ["\n", "\r"]:
+            should_split_after = True
+
+        # IME actions
+        if use_ime_actions and act_col:
+            act = to_int_or_none(row[act_col])
+            if act in ime_submit:
+                should_split_after = True
+        
+        # Text Cleared Heuristic (Explicit clear)
+        if prev_text_snapshot and prev_text_snapshot.strip() and not (last_text_snapshot and last_text_snapshot.strip()):
+            should_split_after = True
+
+        if should_split_after:
+            end_segment(cur_ts)
+
+    # finalize trailing buffer
+    if current_rows and (buf_chars or (last_text_snapshot and last_text_snapshot.strip())):
+        end_segment(current_rows[-1][ts_col])
+
+    return segments
 
 # -------- Session Helper Functions --------
 
@@ -126,7 +408,7 @@ def index():
         )
         
         # Store segments in cache file instead of session
-        save_segments_cache(segments, app.config['CACHE_FOLDER'], db_path)
+        save_segments_cache(segments)
         session['total_rows'] = total_rows
         session['loaded_rows'] = loaded_rows
         
@@ -184,8 +466,6 @@ def index():
                              db_filename=os.path.basename(db_path))
     
     except Exception as e:
-        import traceback
-        traceback.print_exc()
         flash(f'Error processing database: {str(e)}', 'error')
         return render_template('index.html', no_db=True)
 
@@ -267,7 +547,7 @@ def undelete_segment(idx):
 @app.route('/delete_all_visible', methods=['POST'])
 def delete_all_visible():
     """Mark all visible segments for deletion."""
-    segments = load_segments_cache(app.config['CACHE_FOLDER']) or []
+    segments = load_segments_cache() or []
     query = request.form.get('query', '')
     
     # Filter segments same way as index route
@@ -304,6 +584,11 @@ def clear_all_data():
         # Clear session
         session.clear()
         
+        # Clear uploaded files (optional - keeps backups)
+        # Uncomment if you want to delete uploaded files too
+        # for f in os.listdir(app.config['UPLOAD_FOLDER']):
+        #     os.remove(os.path.join(app.config['UPLOAD_FOLDER'], f))
+        
         # Clear cache files
         for f in os.listdir(app.config['CACHE_FOLDER']):
             try:
@@ -333,7 +618,7 @@ def download_filtered_db():
         flash('No database loaded', 'error')
         return redirect(url_for('index'))
     
-    segments = load_segments_cache(app.config['CACHE_FOLDER']) or []
+    segments = load_segments_cache() or []
     deleted_ids = set(session.get('deleted_segment_ids', []))
     mapping = session.get('mapping', {})
     table = session.get('table')
@@ -418,7 +703,7 @@ def save_filtered():
         flash('No database loaded', 'error')
         return redirect(url_for('index'))
     
-    segments = load_segments_cache(app.config['CACHE_FOLDER']) or []
+    segments = load_segments_cache() or []
     deleted_ids = set(session.get('deleted_segment_ids', []))
     mapping = session.get('mapping', {})
     table = session.get('table')
@@ -513,7 +798,7 @@ def get_keystrokes(segment_idx):
         db_path = get_db_path()
         if not db_path:
              return jsonify({'error': 'No database loaded'}), 400
-        segments = load_segments_cache(app.config['CACHE_FOLDER']) or []
+        segments = load_segments_cache() or []
         mapping = session.get('mapping', {})
         table = session.get('table')
         
@@ -571,36 +856,5 @@ def get_keystrokes(segment_idx):
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
-@app.route('/export/<format>')
-def export_data(format):
-    """Export segments to CSV or JSON."""
-    segments = load_segments_cache(app.config['CACHE_FOLDER']) or []
-    deleted_ids = set(session.get('deleted_segment_ids', []))
-    
-    # Filter out deleted
-    export_segments = [s for i, s in enumerate(segments) if i not in deleted_ids]
-    
-    if not export_segments:
-        flash('No segments to export', 'warning')
-        return redirect(url_for('index'))
-    
-    if format == 'json':
-        return jsonify(export_segments)
-    elif format == 'csv':
-        df = pd.DataFrame(export_segments)
-        # Drop row_ids as it's a list and messy in CSV
-        if 'row_ids' in df.columns:
-            df = df.drop(columns=['row_ids'])
-        
-        csv_data = df.to_csv(index=False)
-        return Response(
-            csv_data,
-            mimetype="text/csv",
-            headers={"Content-disposition": "attachment; filename=segments.csv"}
-        )
-    else:
-        flash('Invalid format', 'error')
-        return redirect(url_for('index'))
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=8080)
