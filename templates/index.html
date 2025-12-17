@@ -1,0 +1,544 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if no_db %}
+<!-- Upload Section -->
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="bi bi-upload"></i> Upload Database</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Upload a keyboard .db (SQLite) file from AWARE to begin viewing and cleaning keystroke data.</p>
+                <form action="{{ url_for('upload_file') }}" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="database" class="form-label">Select Database File</label>
+                        <input class="form-control" type="file" id="database" name="database" accept=".db,.sqlite,.sqlite3" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-upload"></i> Upload & Load
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<!-- Main Viewer -->
+<div class="row">
+    <!-- Segments Viewer (Full Width) -->
+    <div class="col-12">
+        <!-- Database Info Bar -->
+        <div class="alert alert-info mb-3">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <strong><i class="bi bi-database"></i> Database:</strong> <code>{{ table }}</code> | 
+                    <strong>Total Rows:</strong> {{ total_rows }} | 
+                    <strong>Loaded:</strong> {{ loaded_rows }} |
+                    <strong>Segments:</strong> {{ total_segments }}
+                </div>
+                <div class="col-md-4 text-end">
+                    <form method="post" action="{{ url_for('clear_all_data') }}" style="display: inline;" onsubmit="return confirm('⚠️ This will clear ALL data and reset the session. This action is for privacy when multiple users use this app. Continue?')">
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <i class="bi bi-x-circle"></i> Clear All Data & Reset
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Header and Controls -->
+        <div class="card shadow mb-3">
+            <div class="card-header bg-success text-white">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h5 class="mb-0"><i class="bi bi-list-ul"></i> Segments</h5>
+                    </div>
+                    <div class="col-auto">
+                        <span class="badge bg-light text-dark">{{ total_segments }} total</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Search and Filter -->
+                <form method="get" class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="q" value="{{ query }}" placeholder="Filter by text contains...">
+                        <button class="btn btn-outline-primary" type="submit">
+                            <i class="bi bi-search"></i> Search
+                        </button>
+                        {% if query %}
+                        <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle"></i> Clear
+                        </a>
+                        {% endif %}
+                    </div>
+                </form>
+                
+                <!-- Status Bar -->
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <p class="mb-0">
+                            Showing <strong>{{ filtered_segments }}</strong> segments 
+                            {% if query %}<small class="text-muted">(filtered)</small>{% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        {% if deleted_count > 0 %}
+                        <span class="badge bg-danger">
+                            <i class="bi bi-trash"></i> {{ deleted_count }} marked for deletion
+                        </span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Batch Actions -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="btn-group batch-actions-container" role="group">
+                            <button type="button" class="btn btn-warning btn-sm mark-all-btn" onclick="return confirm('Mark all visible segments for deletion?')">
+                                <i class="bi bi-trash"></i> Mark ALL for Deletion
+                            </button>
+                            
+                            <span class="conditional-buttons" {% if deleted_count == 0 %}style="display: none;"{% endif %}>
+                                <form method="post" action="{{ url_for('download_filtered_db') }}" style="display: inline;">
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <i class="bi bi-download"></i> Download Filtered DB
+                                    </button>
+                                </form>
+                                
+                                <button type="button" class="btn btn-secondary btn-sm clear-marks-btn">
+                                    <i class="bi bi-arrow-counterclockwise"></i> Clear Marks
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pagination Top -->
+                <nav aria-label="Segment navigation">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('index', page=page-1, q=query) }}">
+                                <i class="bi bi-chevron-left"></i> Prev
+                            </a>
+                        </li>
+                        <li class="page-item disabled">
+                            <span class="page-link">Page {{ page }} of {{ total_pages }}</span>
+                        </li>
+                        <li class="page-item {% if page >= total_pages %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('index', page=page+1, q=query) }}">
+                                Next <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- Segments List -->
+                <div class="segments-list">
+                    {% for segment in segments %}
+                    {% set is_deleted = segment.original_idx in session.get('deleted_segment_ids', []) %}
+                    <div class="card mb-3 segment-card {% if is_deleted %}border-danger bg-danger-subtle{% endif %}" data-segment-idx="{{ segment.original_idx }}">
+                        <div class="card-body">
+                            <div class="row align-items-start">
+                                <div class="col-md-8">
+                                    <h6 class="{% if is_deleted %}text-danger{% endif %}">
+                                        <strong>{{ start_idx + loop.index }}.</strong>
+                                        {% if segment.text|length > 200 %}
+                                            {{ segment.text[:200] }}...
+                                        {% else %}
+                                            {{ segment.text }}
+                                        {% endif %}
+                                    </h6>
+                                </div>
+                                <div class="col-md-2">
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-clock"></i> {{ segment.time_str }}
+                                    </small>
+                                    {% if segment.package %}
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-app"></i> {{ segment.package }}
+                                    </small>
+                                    {% endif %}
+                                    {% if segment.label %}
+                                    <small class="text-muted d-block">
+                                        <i class="bi bi-tag"></i> {{ segment.label }}
+                                    </small>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-2 text-end">
+                                    {% if is_deleted %}
+                                    <button class="btn btn-sm btn-outline-success undelete-btn" data-segment-idx="{{ segment.original_idx }}">
+                                        <i class="bi bi-arrow-counterclockwise"></i> Unmark
+                                    </button>
+                                    {% else %}
+                                    <button class="btn btn-sm btn-outline-danger delete-btn" data-segment-idx="{{ segment.original_idx }}">
+                                        <i class="bi bi-trash"></i> Delete
+                                    </button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <!-- Expandable Keystrokes -->
+                            <div class="mt-2">
+                                <button class="btn btn-sm btn-outline-secondary toggle-keystrokes" data-segment-idx="{{ segment.original_idx }}" data-bs-toggle="collapse" data-bs-target="#keystrokes-{{ segment.original_idx }}">
+                                    <i class="bi bi-eye"></i> View {{ segment.row_ids|length }} keystrokes
+                                </button>
+                                
+                                <div class="collapse mt-2" id="keystrokes-{{ segment.original_idx }}">
+                                    <div class="keystrokes-container" data-segment-idx="{{ segment.original_idx }}">
+                                        <div class="text-center py-3">
+                                            <div class="spinner-border spinner-border-sm" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                            <p class="small text-muted mt-2">Loading keystrokes...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <!-- Pagination Bottom -->
+                <nav aria-label="Segment navigation">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <li class="page-item {% if page <= 1 %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('index', page=page-1, q=query) }}">
+                                <i class="bi bi-chevron-left"></i> Prev
+                            </a>
+                        </li>
+                        <li class="page-item disabled">
+                            <span class="page-link">Page {{ page }} of {{ total_pages }}</span>
+                        </li>
+                        <li class="page-item {% if page >= total_pages %}disabled{% endif %}">
+                            <a class="page-link" href="{{ url_for('index', page=page+1, q=query) }}">
+                                Next <i class="bi bi-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="bi bi-lightbulb"></i> <strong>Tip:</strong> Use the filter box to find sensitive messages and delete them in bulk.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Delete counter element (dynamically updated)
+const deletedCountBadge = document.querySelector('.badge.bg-danger');
+
+// Handle delete button clicks
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('delete-btn') || e.target.closest('.delete-btn')) {
+        e.preventDefault();
+        const btn = e.target.classList.contains('delete-btn') ? e.target : e.target.closest('.delete-btn');
+        const segmentIdx = btn.dataset.segmentIdx;
+        const card = document.querySelector(`.segment-card[data-segment-idx="${segmentIdx}"]`);
+        
+        if (!segmentIdx) {
+            console.error('No segment index found');
+            return;
+        }
+        
+        console.log('Deleting segment:', segmentIdx);
+        
+        fetch(`/delete_segment/${segmentIdx}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => {
+                console.log('Delete response:', res);
+                return res.json();
+            })
+            .then(data => {
+                console.log('Delete data:', data);
+                if (data.success) {
+                    // Update UI
+                    if (card) {
+                        card.classList.add('border-danger', 'bg-danger-subtle');
+                        const h6 = card.querySelector('h6');
+                        if (h6) {
+                            h6.classList.add('text-danger');
+                        }
+                    }
+                    
+                    // Replace delete button with undelete
+                    btn.className = 'btn btn-sm btn-outline-success undelete-btn';
+                    btn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> Unmark';
+                    btn.dataset.segmentIdx = segmentIdx;
+                    
+                    // Update badge
+                    updateDeletedCount(data.deleted_count);
+                    
+                    // Show toast
+                    showToast(`Segment marked for deletion`);
+                } else {
+                    console.error('Delete failed:', data);
+                    showToast('Failed to delete segment', 'error');
+                }
+            })
+            .catch(err => {
+                console.error('Delete error:', err);
+                showToast('Error deleting segment', 'error');
+            });
+    }
+    
+    if (e.target.classList.contains('undelete-btn') || e.target.closest('.undelete-btn')) {
+        e.preventDefault();
+        const btn = e.target.classList.contains('undelete-btn') ? e.target : e.target.closest('.undelete-btn');
+        const segmentIdx = btn.dataset.segmentIdx;
+        const card = document.querySelector(`.segment-card[data-segment-idx="${segmentIdx}"]`);
+        
+        if (!segmentIdx) {
+            console.error('No segment index found');
+            return;
+        }
+        
+        console.log('Undeleting segment:', segmentIdx);
+        
+        fetch(`/undelete_segment/${segmentIdx}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(res => {
+                console.log('Undelete response:', res);
+                return res.json();
+            })
+            .then(data => {
+                console.log('Undelete data:', data);
+                if (data.success) {
+                    // Update UI
+                    if (card) {
+                        card.classList.remove('border-danger', 'bg-danger-subtle');
+                        const h6 = card.querySelector('h6');
+                        if (h6) {
+                            h6.classList.remove('text-danger');
+                        }
+                    }
+                    
+                    // Replace undelete button with delete
+                    btn.className = 'btn btn-sm btn-outline-danger delete-btn';
+                    btn.innerHTML = '<i class="bi bi-trash"></i> Delete';
+                    btn.dataset.segmentIdx = segmentIdx;
+                    
+                    // Update badge
+                    updateDeletedCount(data.deleted_count);
+                    
+                    // Show toast
+                    showToast(`Segment unmarked`);
+                } else {
+                    console.error('Undelete failed:', data);
+                    showToast('Failed to undelete segment', 'error');
+                }
+            })
+            .catch(err => {
+                console.error('Undelete error:', err);
+                showToast('Error undeleting segment', 'error');
+            });
+    }
+    
+    // Handle "Mark ALL for Deletion" button
+    if (e.target.classList.contains('mark-all-btn') || e.target.closest('.mark-all-btn')) {
+        const btn = e.target.classList.contains('mark-all-btn') ? e.target : e.target.closest('.mark-all-btn');
+        
+        // Get current search query from URL or input
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q') || '';
+        
+        // Mark all visible segments for deletion
+        const visibleCards = document.querySelectorAll('.segment-card:not(.d-none)');
+        let markedCount = 0;
+        
+        visibleCards.forEach(card => {
+            const segmentIdx = card.dataset.segmentIdx;
+            const deleteBtn = card.querySelector('.delete-btn');
+            
+            if (deleteBtn) {
+                // Call delete endpoint
+                fetch(`/delete_segment/${segmentIdx}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        markedCount++;
+                        // Update UI
+                        card.classList.add('border-danger', 'bg-danger-subtle');
+                        const h6 = card.querySelector('h6');
+                        if (h6) {
+                            h6.classList.add('text-danger');
+                        }
+                        
+                        // Replace delete button with undelete
+                        deleteBtn.className = 'btn btn-sm btn-outline-secondary undelete-btn';
+                        deleteBtn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> Unmark';
+                        deleteBtn.dataset.segmentIdx = segmentIdx;
+                        
+                        // Update badge
+                        updateDeletedCount(data.deleted_count);
+                    }
+                });
+            }
+        });
+        
+        showToast(`Marked ${visibleCards.length} segments for deletion`, 'success');
+    }
+    
+    // Handle "Clear Marks" button
+    if (e.target.classList.contains('clear-marks-btn') || e.target.closest('.clear-marks-btn')) {
+        fetch('/clear_deletions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                // Update all segment cards to remove deletion styling
+                document.querySelectorAll('.segment-card').forEach(card => {
+                    card.classList.remove('border-danger', 'bg-danger-subtle');
+                    const h6 = card.querySelector('h6');
+                    if (h6) {
+                        h6.classList.remove('text-danger');
+                    }
+                    
+                    // Replace all undelete buttons with delete buttons
+                    const undeleteBtn = card.querySelector('.undelete-btn');
+                    if (undeleteBtn) {
+                        const segmentIdx = undeleteBtn.dataset.segmentIdx;
+                        undeleteBtn.className = 'btn btn-sm btn-outline-danger delete-btn';
+                        undeleteBtn.innerHTML = '<i class="bi bi-trash"></i> Delete';
+                        undeleteBtn.dataset.segmentIdx = segmentIdx;
+                    }
+                });
+                
+                updateDeletedCount(0);
+                showToast('Cleared all deletion marks', 'success');
+            }
+        })
+        .catch(err => {
+            console.error('Clear marks error:', err);
+            showToast('Error clearing marks', 'error');
+        });
+    }
+});
+
+// Load keystrokes when expanded
+document.addEventListener('shown.bs.collapse', function(e) {
+    if (e.target.id.startsWith('keystrokes-')) {
+        const segmentIdx = e.target.querySelector('.keystrokes-container').dataset.segmentIdx;
+        const container = e.target.querySelector('.keystrokes-container');
+        
+        // Only load if not already loaded
+        if (container.querySelector('.spinner-border')) {
+            fetch(`/get_keystrokes/${segmentIdx}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        renderKeystrokes(container, data);
+                    } else {
+                        container.innerHTML = `<div class="alert alert-danger">Error: ${data.error}</div>`;
+                    }
+                })
+                .catch(err => {
+                    container.innerHTML = `<div class="alert alert-danger">Error loading keystrokes: ${err}</div>`;
+                });
+        }
+    }
+});
+
+function renderKeystrokes(container, data) {
+    let html = `
+        <div class="row mb-2">
+            <div class="col-md-4"><strong>Total Rows:</strong> ${data.count}</div>
+            <div class="col-md-4"><strong>Row IDs:</strong> ${Math.min(...data.rows.map(r => r._id || r.rowid))} - ${Math.max(...data.rows.map(r => r._id || r.rowid))}</div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-sm table-striped table-hover">
+                <thead>
+                    <tr>`;
+    
+    // Get important columns - include current_text
+    const importantCols = ['time_str', 'package_name', 'current_text', 'key_character', 'key_code', 'text', 'label'];
+    const displayCols = importantCols.filter(col => data.columns.includes(col) || col === 'time_str');
+    
+    displayCols.forEach(col => {
+        html += `<th>${col}</th>`;
+    });
+    
+    html += `</tr></thead><tbody>`;
+    
+    data.rows.forEach(row => {
+        html += '<tr>';
+        displayCols.forEach(col => {
+            let value = row[col] || '';
+            if (value && value.toString().length > 50) {
+                value = value.toString().substring(0, 50) + '...';
+            }
+            html += `<td>${value}</td>`;
+        });
+        html += '</tr>';
+    });
+    
+    html += '</tbody></table></div>';
+    
+    container.innerHTML = html;
+}
+
+function updateDeletedCount(count) {
+    const statusArea = document.querySelector('.col-md-6.text-end');
+    if (statusArea) {
+        if (count > 0) {
+            statusArea.innerHTML = `<span class="badge bg-danger"><i class="bi bi-trash"></i> ${count} marked for deletion</span>`;
+        } else {
+            statusArea.innerHTML = '';
+        }
+    } else {
+        console.warn('Status area not found for update');
+    }
+    
+    // Show/hide download and clear buttons based on count
+    const conditionalButtons = document.querySelector('.conditional-buttons');
+    if (conditionalButtons) {
+        conditionalButtons.style.display = count > 0 ? 'inline' : 'none';
+    }
+}
+
+function showToast(message, type = 'success') {
+    // Simple toast notification
+    const bgColor = type === 'success' ? '#198754' : '#dc3545';
+    const toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.textContent = message;
+    toast.style.cssText = `position: fixed; top: 20px; right: 20px; background: ${bgColor}; color: white; padding: 12px 20px; border-radius: 5px; z-index: 9999; animation: slideIn 0.3s ease-out;`;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease-in';
+        setTimeout(() => toast.remove(), 300);
+    }, 2000);
+}
+</script>
+{% endblock %}
