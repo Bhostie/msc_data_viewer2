@@ -81,11 +81,102 @@ class Segmenter:
         # Remove surrounding brackets like [text]
         if s.startswith('[') and s.endswith(']'):
             s = s[1:-1]
+        # Strip whitespace AFTER removing brackets (spaces inside brackets)
+        s = s.strip()
         # Return empty if it's a placeholder
         placeholders = ['message', 'search…', 'search...', 'type a message', 'type message']
         if s.lower() in placeholders:
             return ""
         return s
+
+    def _is_deletion_pattern(self, prev_text: str, curr_before: Any) -> bool:
+        """
+        Check if this empty before_text is due to user deleting text (not sending).
+        
+        When user SENDS: previous current_text has the complete message (non-empty)
+        When user DELETES: previous current_text is empty/[] because they deleted everything
+        
+        If the previous text was already empty, this is a continuation (delete & retype),
+        not a new message send.
+        
+        NOTE: If prev_text was a PLACEHOLDER (like "Message" or "Search…"), that doesn't
+        count as deletion - it means the field was showing a placeholder before user typed.
+        """
+        # Check if prev_text is a raw placeholder (before cleaning)
+        if prev_text:
+            raw = str(prev_text).strip()
+            if raw.startswith('[') and raw.endswith(']'):
+                raw = raw[1:-1]
+            placeholders = ['message', 'search…', 'search...', 'type a message', 'type message']
+            if raw.lower() in placeholders:
+                # Previous was a placeholder, so this is NOT a deletion pattern
+                # It's a new message in a fresh input field
+                return False
+        
+        # Clean the previous text
+        prev_clean = self._clean_text(prev_text)
+        
+        # If previous text was empty (user deleted everything), 
+        # this is a continuation (delete & retype), not a new message send
+        if prev_clean == "" or prev_clean == "[]":
+            return True
+        
+        return False
+    
+    def _is_continuous_edit(self, prev_current: str, curr_current: str) -> bool:
+        """
+        Check if the current row is a continuation of editing the previous text.
+        
+        This handles cases like search boxes where:
+        - User types "watch", submits search (before_text becomes empty)
+        - But current_text still shows "watch" or modified version
+        - User then continues editing/deleting from that text
+        
+        If the current_text is same as or derived from prev_current, 
+        it's a continuation, not a new message.
+        
+        CRITICAL: If current text is very short (1-3 chars) and previous was much longer,
+        this is likely a NEW message starting, not continuous editing.
+        """
+        prev = self._clean_text(prev_current)
+        curr = self._clean_text(curr_current)
+        
+        if not prev or not curr:
+            return False
+        
+        # If current text is very short and previous was much longer,
+        # this is likely a NEW message (user just typed first character)
+        # NOT continuous editing
+        if len(curr) <= 3 and len(prev) > len(curr) * 3:
+            return False
+        
+        # If current text is same as previous - editing continues
+        if curr == prev:
+            return True
+        
+        # If current is a prefix/suffix of previous (user is deleting)
+        # But only if the length difference is reasonable (not too drastic)
+        if prev.startswith(curr) and len(prev) - len(curr) <= 5:
+            return True
+        if curr.startswith(prev) and len(curr) - len(prev) <= 5:
+            return True
+        
+        # For long texts (>100 chars), check if they're mostly the same
+        # This handles editing in the middle of long messages (e.g., adding emoji bullets)
+        if len(prev) > 100 and len(curr) > 100:
+            len_ratio = min(len(prev), len(curr)) / max(len(prev), len(curr))
+            if len_ratio > 0.90:  # Lengths within 10%
+                # Check if beginning and end match (edit was in middle)
+                check_len = min(50, len(prev) // 4, len(curr) // 4)
+                first_match = prev[:check_len] == curr[:check_len]
+                last_match = prev[-check_len:] == curr[-check_len:]
+                if first_match and last_match:
+                    return True
+                # Even if just one end matches with very high similarity, consider it continuous
+                if (first_match or last_match) and len_ratio > 0.95:
+                    return True
+        
+        return False
 
     def segment(self) -> List[Dict[str, Any]]:
         """Run the segmentation algorithm."""
@@ -99,6 +190,7 @@ class Segmenter:
         last_lbl: Any = None
         last_ts_val: Any = None
         last_text: str = ""
+        prev_current_text: str = ""  # Track previous row's current_text for deletion detection
 
         def end_segment(end_ts: Any, final_text: str):
             nonlocal current_rows, seg_start_ts
@@ -150,14 +242,113 @@ class Segmenter:
             # --- PRIMARY SEGMENTATION: Check if this is a NEW MESSAGE ---
             should_split_before = False
             
+            # First, check time gap (strong indicator regardless of text patterns)
+            time_gap_seconds = 0.0
+            if last_ts_val is not None:
+                try:
+                    time_gap_seconds = (float(cur_ts) - float(last_ts_val)) / 1000.0
+                except Exception:
+                    pass
+            
             # METHOD 1: Use before_text column (most reliable for AWARE data)
-            # A new message starts when before_text is EMPTY (meaning text field was cleared/sent)
+            # A new message starts when:
+            #   - before_text is EMPTY (text field was cleared)
+            #   - AND the previous current_text was NOT empty (meaning message was sent, not deleted)
+            #   - AND the current text is NOT a continuation of editing previous text
+            #   - OR there's a significant time gap (user moved on)
             if self.before_text_col and self.before_text_col in row.index:
                 before_val = row[self.before_text_col]
-                if self._is_empty_or_placeholder(before_val) and current_rows and last_text:
-                    should_split_before = True
+                if self._is_empty_or_placeholder(before_val) and current_rows:
+                    # Large time gap = definitely new message
+                    if time_gap_seconds > 60.0:  # More than 1 minute
+                        should_split_before = True
+                    # Check if this is a real send or just user deleting & retyping
+                    elif not self._is_deletion_pattern(prev_current_text, before_val):
+                        # Check if user is continuing to edit (e.g., search box scenario)
+                        raw_curr = str(row[self.text_col]) if self.text_col and self.text_col in row.index else ""
+                        # Only consider continuous edit if gap is short (< 30 seconds)
+                        if time_gap_seconds > 30.0 or not self._is_continuous_edit(prev_current_text, raw_curr):
+                            # Previous text was substantial and not continuing edit - new message
+                            should_split_before = True
+                    # else: User deleted everything and is retyping - don't split
             
-            # METHOD 2: Fallback - Gap-based splitting
+            # METHOD 2: Detect "text jump" - significant gap + completely different text
+            # This catches cases where before_text isn't empty but user switched context
+            # (e.g., row 95->96 in segment 5: gap=537s, text jumps from long message to "ek")
+            if not should_split_before and current_rows and time_gap_seconds > 30.0:
+                # Check if text completely changed (not a continuation)
+                prev_clean = self._clean_text(prev_current_text)
+                curr_clean = self._clean_text(curr_text) if curr_text else ""
+                
+                if prev_clean and curr_clean:
+                    # If texts have no relationship and there's a big gap, split
+                    has_overlap = (
+                        prev_clean.startswith(curr_clean) or 
+                        curr_clean.startswith(prev_clean) or
+                        prev_clean in curr_clean or 
+                        curr_clean in prev_clean
+                    )
+                    
+                    # For long texts, check if they're "mostly the same" (editing in middle)
+                    if not has_overlap and len(prev_clean) > 100 and len(curr_clean) > 100:
+                        len_ratio = min(len(prev_clean), len(curr_clean)) / max(len(prev_clean), len(curr_clean))
+                        if len_ratio > 0.90:  # Lengths within 10%
+                            # Check if beginning or end matches
+                            check_len = min(50, len(prev_clean) // 4, len(curr_clean) // 4)
+                            first_match = prev_clean[:check_len] == curr_clean[:check_len]
+                            last_match = prev_clean[-check_len:] == curr_clean[-check_len:]
+                            if first_match or last_match:
+                                has_overlap = True  # It's the same long text being edited
+                    
+                    if not has_overlap:
+                        should_split_before = True
+            
+            # METHOD 3: Detect "text discontinuity" - before_text doesn't match previous current_text
+            # This catches cases where the user's text field was completely replaced
+            # (e.g., switching chat windows, autocomplete replacement, etc.)
+            # 
+            # EXCEPTION: For very long texts, the user might be editing in the middle,
+            # which causes before_text to not exactly match prev_current_text.
+            # In this case, check if they're "mostly the same" (high similarity).
+            if not should_split_before and current_rows and self.before_text_col:
+                before_val = row[self.before_text_col] if self.before_text_col in row.index else None
+                if before_val is not None and not self._is_empty_or_placeholder(before_val):
+                    before_clean = self._clean_text(before_val)
+                    prev_clean = self._clean_text(prev_current_text)
+                    
+                    # If before_text exists but doesn't match what we expect from previous current_text
+                    # (before should be a prefix/suffix or similar to prev_current)
+                    if prev_clean and before_clean and len(prev_clean) > 3:
+                        # Check if before_text is related to previous current_text
+                        is_related = (
+                            prev_clean.startswith(before_clean) or
+                            before_clean.startswith(prev_clean) or
+                            prev_clean == before_clean or
+                            # Allow for minor edits (within 3 chars)
+                            (len(before_clean) > 0 and abs(len(prev_clean) - len(before_clean)) <= 3 and 
+                             (prev_clean[:min(len(prev_clean), len(before_clean))] == before_clean[:min(len(prev_clean), len(before_clean))]))
+                        )
+                        
+                        # For long texts (>100 chars), check if they're mostly the same
+                        # This handles the case of editing in the middle of a long message
+                        if not is_related and len(prev_clean) > 100 and len(before_clean) > 100:
+                            # Check if lengths are similar (within 10%)
+                            len_ratio = min(len(prev_clean), len(before_clean)) / max(len(prev_clean), len(before_clean))
+                            if len_ratio > 0.85:  # Relaxed from 0.95 to handle AWARE logger quirks
+                                # Check if first 50 and last 50 chars match (editing in middle)
+                                first_match = prev_clean[:50] == before_clean[:50]
+                                last_match = prev_clean[-50:] == before_clean[-50:]
+                                # If BOTH match, very likely same text
+                                if first_match and last_match:
+                                    is_related = True
+                                # If only one matches and ratio is very high, also consider related
+                                elif (first_match or last_match) and len_ratio > 0.92:
+                                    is_related = True
+                        
+                        if not is_related:
+                            should_split_before = True
+            
+            # METHOD 4: Fallback - Gap-based splitting (for non-AWARE data)
             if not self.before_text_col:
                 if last_ts_val is not None and self.cfg.gap_seconds:
                     try:
@@ -196,6 +387,13 @@ class Segmenter:
             # Update text snapshot (current_text contains the cumulative message)
             if curr_text:
                 last_text = curr_text
+            
+            # Track raw current_text for deletion detection (before cleaning)
+            if self.text_col and self.text_col in row.index:
+                raw_val = row[self.text_col]
+                prev_current_text = str(raw_val) if raw_val is not None and not (isinstance(raw_val, float) and np.isnan(raw_val)) else ""
+            else:
+                prev_current_text = ""
 
             # --- Check End-of-Segment Triggers (Enter, IME) ---
             should_split_after = False
