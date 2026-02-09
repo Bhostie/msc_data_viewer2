@@ -255,6 +255,34 @@ def delete_segment(idx):
     
     return jsonify({'success': True, 'deleted_count': len(deleted_ids)})
 
+@app.route('/delete_segments_batch', methods=['POST'])
+def delete_segments_batch():
+    """Mark multiple segments for deletion."""
+    data = request.get_json()
+    if not data or 'segment_ids' not in data:
+        return jsonify({'error': 'No segment IDs provided'}), 400
+        
+    ids_to_delete = data['segment_ids']
+    if not isinstance(ids_to_delete, list):
+         return jsonify({'error': 'segment_ids must be a list'}), 400
+
+    deleted_ids = set(session.get('deleted_segment_ids', []))
+    
+    # Add new IDs
+    for idx in ids_to_delete:
+        try:
+            deleted_ids.add(int(idx))
+        except (ValueError, TypeError):
+            continue
+            
+    session['deleted_segment_ids'] = list(deleted_ids)
+    
+    return jsonify({
+        'success': True, 
+        'deleted_count': len(deleted_ids),
+        'added_count': len(ids_to_delete)
+    })
+
 @app.route('/undelete_segment/<int:idx>', methods=['POST'])
 def undelete_segment(idx):
     """Unmark a segment for deletion."""

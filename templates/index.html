@@ -377,42 +377,65 @@ document.addEventListener('click', function(e) {
         const visibleCards = document.querySelectorAll('.segment-card:not(.d-none)');
         let markedCount = 0;
         
+        // Collect all IDs to delete
+        const idsToDelete = [];
+        const cardsToUpdate = [];
+        
         visibleCards.forEach(card => {
             const segmentIdx = card.dataset.segmentIdx;
             const deleteBtn = card.querySelector('.delete-btn');
             
+            // Only add if currently deletable (not already deleted)
             if (deleteBtn) {
-                // Call delete endpoint
-                fetch(`/delete_segment/${segmentIdx}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        markedCount++;
-                        // Update UI
-                        card.classList.add('border-danger', 'bg-danger-subtle');
-                        const h6 = card.querySelector('h6');
-                        if (h6) {
-                            h6.classList.add('text-danger');
-                        }
-                        
-                        // Replace delete button with undelete
-                        deleteBtn.className = 'btn btn-sm btn-outline-secondary undelete-btn';
-                        deleteBtn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> Unmark';
-                        deleteBtn.dataset.segmentIdx = segmentIdx;
-                        
-                        // Update badge
-                        updateDeletedCount(data.deleted_count);
-                    }
-                });
+                idsToDelete.push(segmentIdx);
+                cardsToUpdate.push({card, deleteBtn, segmentIdx});
             }
         });
+
+        if (idsToDelete.length === 0) {
+            showToast('No new segments to delete', 'warning');
+            return;
+        }
         
-        showToast(`Marked ${visibleCards.length} segments for deletion`, 'success');
+        // Single batch request
+        fetch('/delete_segments_batch', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ segment_ids: idsToDelete })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                // Update UI for all cards
+                cardsToUpdate.forEach(item => {
+                    const {card, deleteBtn, segmentIdx} = item;
+                    
+                    // Update card style
+                    card.classList.add('border-danger', 'bg-danger-subtle');
+                    const h6 = card.querySelector('h6');
+                    if (h6) {
+                        h6.classList.add('text-danger');
+                    }
+                    
+                    // Replace button
+                    deleteBtn.className = 'btn btn-sm btn-outline-secondary undelete-btn';
+                    deleteBtn.innerHTML = '<i class="bi bi-arrow-counterclockwise"></i> Unmark';
+                    deleteBtn.dataset.segmentIdx = segmentIdx;
+                });
+                
+                // Update badge
+                updateDeletedCount(data.deleted_count);
+                showToast(`Marked ${idsToDelete.length} segments for deletion`, 'success');
+            } else {
+                showToast('Failed to batch delete', 'error');
+            }
+        })
+        .catch(err => {
+            console.error('Batch delete error:', err);
+            showToast('Error executing batch delete', 'error');
+        });
     }
     
     // Handle "Clear Marks" button
