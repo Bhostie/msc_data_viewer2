@@ -1,0 +1,515 @@
+[
+  {
+    "_id" : 2041,
+    "timestamp" : "1764187350550",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[B]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2042,
+    "timestamp" : "1764187351020",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "B",
+    "current_text" : "[Bu]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2043,
+    "timestamp" : "1764187351959",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu",
+    "current_text" : "[Bu ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2044,
+    "timestamp" : "1764187352408",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu ",
+    "current_text" : "[Bu c]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2045,
+    "timestamp" : "1764187354771",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu c",
+    "current_text" : "[Bu cü]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2046,
+    "timestamp" : "1764187355261",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cü",
+    "current_text" : "[Bu cüm]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2047,
+    "timestamp" : "1764187355499",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cüm",
+    "current_text" : "[Bu cüml]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2048,
+    "timestamp" : "1764187355999",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cüml",
+    "current_text" : "[Bu cümle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2049,
+    "timestamp" : "1764187356575",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle",
+    "current_text" : "[Bu cümlen]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2050,
+    "timestamp" : "1764187356851",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlen",
+    "current_text" : "[Bu cümleni]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2051,
+    "timestamp" : "1764187357278",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümleni",
+    "current_text" : "[Bu cümlenin]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2052,
+    "timestamp" : "1764187357473",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin",
+    "current_text" : "[Bu cümlenin ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2053,
+    "timestamp" : "1764187357926",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ",
+    "current_text" : "[Bu cümlenin o]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2054,
+    "timestamp" : "1764187358284",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin o",
+    "current_text" : "[Bu cümlenin or]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2055,
+    "timestamp" : "1764187358473",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin or",
+    "current_text" : "[Bu cümlenin ort]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2056,
+    "timestamp" : "1764187358736",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ort",
+    "current_text" : "[Bu cümlenin orta]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2057,
+    "timestamp" : "1764187359003",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin orta",
+    "current_text" : "[Bu cümlenin ortas]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2058,
+    "timestamp" : "1764187360672",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortas",
+    "current_text" : "[Bu cümlenin ortası]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2059,
+    "timestamp" : "1764187361108",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortası",
+    "current_text" : "[Bu cümlenin ortasın]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2060,
+    "timestamp" : "1764187361475",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasın",
+    "current_text" : "[Bu cümlenin ortasına]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2061,
+    "timestamp" : "1764187361984",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına",
+    "current_text" : "[Bu cümlenin ortasına ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2062,
+    "timestamp" : "1764187362286",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına ",
+    "current_text" : "[Bu cümlenin ortasına k]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2063,
+    "timestamp" : "1764187362635",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına k",
+    "current_text" : "[Bu cümlenin ortasına ke]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2064,
+    "timestamp" : "1764187363212",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına ke",
+    "current_text" : "[Bu cümlenin ortasına kel]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2065,
+    "timestamp" : "1764187363457",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kel",
+    "current_text" : "[Bu cümlenin ortasına keli]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2066,
+    "timestamp" : "1764187363735",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına keli",
+    "current_text" : "[Bu cümlenin ortasına kelim]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2067,
+    "timestamp" : "1764187364150",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelim",
+    "current_text" : "[Bu cümlenin ortasına kelime]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2068,
+    "timestamp" : "1764187364687",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime",
+    "current_text" : "[Bu cümlenin ortasına kelime ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2069,
+    "timestamp" : "1764187365136",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime ",
+    "current_text" : "[Bu cümlenin ortasına kelime e]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2070,
+    "timestamp" : "1764187365627",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime e",
+    "current_text" : "[Bu cümlenin ortasına kelime ek]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2071,
+    "timestamp" : "1764187365806",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime ek",
+    "current_text" : "[Bu cümlenin ortasına kelime ekl]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2072,
+    "timestamp" : "1764187366226",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime ekl",
+    "current_text" : "[Bu cümlenin ortasına kelime ekle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2073,
+    "timestamp" : "1764187366682",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime ekle",
+    "current_text" : "[Bu cümlenin ortasına kelime eklen]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2074,
+    "timestamp" : "1764187367082",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime eklen",
+    "current_text" : "[Bu cümlenin ortasına kelime eklend]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2075,
+    "timestamp" : "1764187367519",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime eklend",
+    "current_text" : "[Bu cümlenin ortasına kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2076,
+    "timestamp" : "1764187369142",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına  kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2077,
+    "timestamp" : "1764187372171",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına  kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına u kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2078,
+    "timestamp" : "1764187372700",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına u kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uz kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2079,
+    "timestamp" : "1764187373076",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uz kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzu kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2080,
+    "timestamp" : "1764187373410",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzu kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzun kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2081,
+    "timestamp" : "1764187373822",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzun kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzunc kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2082,
+    "timestamp" : "1764187374116",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzunc kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzunca kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2083,
+    "timestamp" : "1764187374696",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzunca kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzunca  kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2084,
+    "timestamp" : "1764187375814",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzunca  kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzunca kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2085,
+    "timestamp" : "1764187376086",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzunca kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzunc kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2086,
+    "timestamp" : "1764187376321",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzunc kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzun kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2087,
+    "timestamp" : "1764187376476",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzun kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uzu kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2088,
+    "timestamp" : "1764187376683",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uzu kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına uz kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2089,
+    "timestamp" : "1764187376884",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına uz kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına u kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2090,
+    "timestamp" : "1764187377373",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına u kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına  kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2091,
+    "timestamp" : "1764187378322",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına  kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına t kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2092,
+    "timestamp" : "1764187378620",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına t kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına te kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2093,
+    "timestamp" : "1764187379144",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına te kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına tek kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2094,
+    "timestamp" : "1764187379478",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına tek kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına tek  kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2095,
+    "timestamp" : "1764187379663",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına tek  kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına tek b kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2096,
+    "timestamp" : "1764187380023",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına tek b kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına tek bi kelime eklendi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2097,
+    "timestamp" : "1764187380415",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümlenin ortasına tek bi kelime eklendi",
+    "current_text" : "[Bu cümlenin ortasına tek bir kelime eklendi]",
+    "is_password" : 0
+  }
+]

@@ -1,0 +1,272 @@
+[
+  {
+    "_id" : 400,
+    "timestamp" : "1764184904702",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[B]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 401,
+    "timestamp" : "1764184905117",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "B",
+    "current_text" : "[Bu]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 402,
+    "timestamp" : "1764184905428",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu",
+    "current_text" : "[Bu ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 403,
+    "timestamp" : "1764184905694",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu ",
+    "current_text" : "[Bu c]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 404,
+    "timestamp" : "1764184906483",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu c",
+    "current_text" : "[Bu cü]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 405,
+    "timestamp" : "1764184907216",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cü",
+    "current_text" : "[Bu cüm]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 406,
+    "timestamp" : "1764184907476",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cüm",
+    "current_text" : "[Bu cüml]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 407,
+    "timestamp" : "1764184907990",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cüml",
+    "current_text" : "[Bu cümle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 408,
+    "timestamp" : "1764184908725",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle",
+    "current_text" : "[Bu cümle ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 409,
+    "timestamp" : "1764184909230",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle ",
+    "current_text" : "[Bu cümle 1]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 410,
+    "timestamp" : "1764184909778",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 1",
+    "current_text" : "[Bu cümle 16]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 411,
+    "timestamp" : "1764184911118",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16",
+    "current_text" : "[Bu cümle 16:]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 412,
+    "timestamp" : "1764184911541",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:",
+    "current_text" : "[Bu cümle 16:0]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 413,
+    "timestamp" : "1764184911745",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16",
+    "current_text" : "[Bu cümle 16:00]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 414,
+    "timestamp" : "1764184912781",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:",
+    "current_text" : "[Bu cümle 16:00']",
+    "is_password" : 0
+  },
+  {
+    "_id" : 415,
+    "timestamp" : "1764184913380",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'",
+    "current_text" : "[Bu cümle 16:00'd]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 416,
+    "timestamp" : "1764184913583",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'd",
+    "current_text" : "[Bu cümle 16:00'da]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 417,
+    "timestamp" : "1764184914111",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da",
+    "current_text" : "[Bu cümle 16:00'da ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 418,
+    "timestamp" : "1764184914704",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da ",
+    "current_text" : "[Bu cümle 16:00'da y]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 419,
+    "timestamp" : "1764184915068",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da y",
+    "current_text" : "[Bu cümle 16:00'da ya]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 420,
+    "timestamp" : "1764184915273",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da ya",
+    "current_text" : "[Bu cümle 16:00'da yaz]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 421,
+    "timestamp" : "1764184916006",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yaz",
+    "current_text" : "[Bu cümle 16:00'da yazı]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 422,
+    "timestamp" : "1764184916557",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazı",
+    "current_text" : "[Bu cümle 16:00'da yazıl]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 423,
+    "timestamp" : "1764184916854",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazıl",
+    "current_text" : "[Bu cümle 16:00'da yazılm]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 424,
+    "timestamp" : "1764184917462",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılm",
+    "current_text" : "[Bu cümle 16:00'da yazılmı]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 425,
+    "timestamp" : "1764184918538",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılmı",
+    "current_text" : "[Bu cümle 16:00'da yazılmış]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 426,
+    "timestamp" : "1764184918815",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılmış",
+    "current_text" : "[Bu cümle 16:00'da yazılmışt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 427,
+    "timestamp" : "1764184919638",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılmışt",
+    "current_text" : "[Bu cümle 16:00'da yazılmıştı]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 428,
+    "timestamp" : "1764184919920",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılmıştı",
+    "current_text" : "[Bu cümle 16:00'da yazılmıştır]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 429,
+    "timestamp" : "1764184920754",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bu cümle 16:00'da yazılmıştır",
+    "current_text" : "[Bu cümle 16:00'da yazılmıştır.]",
+    "is_password" : 0
+  }
+]

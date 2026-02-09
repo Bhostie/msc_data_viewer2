@@ -1,0 +1,1 @@
+from performance_analyzer.typing_speed._core import TypingSpeedCalculator

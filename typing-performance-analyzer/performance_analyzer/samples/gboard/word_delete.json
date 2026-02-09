@@ -1,0 +1,290 @@
+[
+  {
+    "_id" : 1840,
+    "timestamp" : "1764187231657",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[B]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1841,
+    "timestamp" : "1764187232202",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "B",
+    "current_text" : "[Bi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1842,
+    "timestamp" : "1764187232572",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bi",
+    "current_text" : "[Bir]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1843,
+    "timestamp" : "1764187233129",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir",
+    "current_text" : "[Bir ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1844,
+    "timestamp" : "1764187233579",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir ",
+    "current_text" : "[Bir s]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1845,
+    "timestamp" : "1764187233714",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir s",
+    "current_text" : "[Bir se]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1846,
+    "timestamp" : "1764187234162",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir se",
+    "current_text" : "[Bir sef]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1847,
+    "timestamp" : "1764187234373",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir sef",
+    "current_text" : "[Bir sefe]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1848,
+    "timestamp" : "1764187234546",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir sefe",
+    "current_text" : "[Bir sefer]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1849,
+    "timestamp" : "1764187234845",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir sefer",
+    "current_text" : "[Bir seferd]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1850,
+    "timestamp" : "1764187234996",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferd",
+    "current_text" : "[Bir seferde]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1851,
+    "timestamp" : "1764187235453",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde",
+    "current_text" : "[Bir seferde ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1852,
+    "timestamp" : "1764187237099",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde ",
+    "current_text" : "[Bir seferde b]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1853,
+    "timestamp" : "1764187238894",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde b",
+    "current_text" : "[Bir seferde bü]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1854,
+    "timestamp" : "1764187239323",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde bü",
+    "current_text" : "[Bir seferde büt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1855,
+    "timestamp" : "1764187240786",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde büt",
+    "current_text" : "[Bir seferde bütü]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1856,
+    "timestamp" : "1764187241248",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde bütü",
+    "current_text" : "[Bir seferde bütün]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1857,
+    "timestamp" : "1764187243910",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde bütün",
+    "current_text" : "[Bir seferde ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1858,
+    "timestamp" : "1764187245038",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde ",
+    "current_text" : "[Bir seferde k]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1859,
+    "timestamp" : "1764187245482",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde k",
+    "current_text" : "[Bir seferde ke]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1860,
+    "timestamp" : "1764187246040",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde ke",
+    "current_text" : "[Bir seferde kel]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1861,
+    "timestamp" : "1764187246244",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kel",
+    "current_text" : "[Bir seferde keli]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1862,
+    "timestamp" : "1764187247365",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde keli",
+    "current_text" : "[Bir seferde kelim]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1863,
+    "timestamp" : "1764187247910",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelim",
+    "current_text" : "[Bir seferde kelime]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1864,
+    "timestamp" : "1764187248324",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime",
+    "current_text" : "[Bir seferde kelime ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1865,
+    "timestamp" : "1764187248685",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime ",
+    "current_text" : "[Bir seferde kelime s]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1866,
+    "timestamp" : "1764187249169",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime s",
+    "current_text" : "[Bir seferde kelime si]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1867,
+    "timestamp" : "1764187249404",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime si",
+    "current_text" : "[Bir seferde kelime sil]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1868,
+    "timestamp" : "1764187249645",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime sil",
+    "current_text" : "[Bir seferde kelime sili]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1869,
+    "timestamp" : "1764187249935",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime sili",
+    "current_text" : "[Bir seferde kelime silin]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1870,
+    "timestamp" : "1764187250355",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime silin",
+    "current_text" : "[Bir seferde kelime silind]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1871,
+    "timestamp" : "1764187250772",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Bir seferde kelime silind",
+    "current_text" : "[Bir seferde kelime silindi]",
+    "is_password" : 0
+  }
+]

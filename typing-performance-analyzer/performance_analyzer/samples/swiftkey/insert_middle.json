@@ -1,0 +1,407 @@
+[
+  {
+    "_id" : 1320,
+    "timestamp" : "1764186414967",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[A]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1321,
+    "timestamp" : "1764186415461",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A",
+    "current_text" : "[A ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1322,
+    "timestamp" : "1764186415991",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A ",
+    "current_text" : "[A n]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1323,
+    "timestamp" : "1764186416631",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A n",
+    "current_text" : "[A ne]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1324,
+    "timestamp" : "1764186416816",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A ne",
+    "current_text" : "[A new]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1325,
+    "timestamp" : "1764186417255",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new",
+    "current_text" : "[A new ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1326,
+    "timestamp" : "1764186417828",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new ",
+    "current_text" : "[A new w]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1327,
+    "timestamp" : "1764186418432",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new w",
+    "current_text" : "[A new wo]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1328,
+    "timestamp" : "1764186418999",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new wo",
+    "current_text" : "[A new wor]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1329,
+    "timestamp" : "1764186419241",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new wor",
+    "current_text" : "[A new word]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1330,
+    "timestamp" : "1764186419869",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word",
+    "current_text" : "[A new word ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1331,
+    "timestamp" : "1764186421763",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word ",
+    "current_text" : "[A new word i]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1332,
+    "timestamp" : "1764186422310",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word i",
+    "current_text" : "[A new word is]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1333,
+    "timestamp" : "1764186422705",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is",
+    "current_text" : "[A new word is ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1334,
+    "timestamp" : "1764186423374",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is ",
+    "current_text" : "[A new word is a]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1335,
+    "timestamp" : "1764186423828",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is a",
+    "current_text" : "[A new word is ad]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1336,
+    "timestamp" : "1764186423970",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is ad",
+    "current_text" : "[A new word is add]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1337,
+    "timestamp" : "1764186424174",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is add",
+    "current_text" : "[A new word is adde]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1338,
+    "timestamp" : "1764186424392",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is adde",
+    "current_text" : "[A new word is added]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1339,
+    "timestamp" : "1764186424980",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added",
+    "current_text" : "[A new word is added ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1340,
+    "timestamp" : "1764186425401",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added ",
+    "current_text" : "[A new word is added i]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1341,
+    "timestamp" : "1764186425761",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added i",
+    "current_text" : "[A new word is added in]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1342,
+    "timestamp" : "1764186426000",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in",
+    "current_text" : "[A new word is added in ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1343,
+    "timestamp" : "1764186426357",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in ",
+    "current_text" : "[A new word is added in t]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1344,
+    "timestamp" : "1764186426555",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in t",
+    "current_text" : "[A new word is added in th]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1345,
+    "timestamp" : "1764186426951",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in th",
+    "current_text" : "[A new word is added in the]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1346,
+    "timestamp" : "1764186427396",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the",
+    "current_text" : "[A new word is added in the ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1347,
+    "timestamp" : "1764186427826",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the ",
+    "current_text" : "[A new word is added in the m]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1348,
+    "timestamp" : "1764186428134",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the m",
+    "current_text" : "[A new word is added in the mi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1349,
+    "timestamp" : "1764186428608",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the mi",
+    "current_text" : "[A new word is added in the mid]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1350,
+    "timestamp" : "1764186428778",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the mid",
+    "current_text" : "[A new word is added in the midd]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1351,
+    "timestamp" : "1764186429252",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the midd",
+    "current_text" : "[A new word is added in the middl]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1352,
+    "timestamp" : "1764186429677",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the middl",
+    "current_text" : "[A new word is added in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1353,
+    "timestamp" : "1764186432386",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added in the middle",
+    "current_text" : "[A new word is added  in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1354,
+    "timestamp" : "1764186432744",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added  in the middle",
+    "current_text" : "[A new word is added b in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1355,
+    "timestamp" : "1764186433083",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added b in the middle",
+    "current_text" : "[A new word is added by in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1356,
+    "timestamp" : "1764186433509",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by in the middle",
+    "current_text" : "[A new word is added by  in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1357,
+    "timestamp" : "1764186433994",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by  in the middle",
+    "current_text" : "[A new word is added by t in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1358,
+    "timestamp" : "1764186434244",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by t in the middle",
+    "current_text" : "[A new word is added by th in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1359,
+    "timestamp" : "1764186434577",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by th in the middle",
+    "current_text" : "[A new word is added by the in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1360,
+    "timestamp" : "1764186435059",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by the in the middle",
+    "current_text" : "[A new word is added by the  in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1361,
+    "timestamp" : "1764186435511",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by the  in the middle",
+    "current_text" : "[A new word is added by the u in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1362,
+    "timestamp" : "1764186435981",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by the u in the middle",
+    "current_text" : "[A new word is added by the us in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1363,
+    "timestamp" : "1764186436198",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by the us in the middle",
+    "current_text" : "[A new word is added by the use in the middle]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1364,
+    "timestamp" : "1764186436364",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A new word is added by the use in the middle",
+    "current_text" : "[A new word is added by the user in the middle]",
+    "is_password" : 0
+  }
+]

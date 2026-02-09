@@ -1,0 +1,173 @@
+[
+  {
+    "_id" : 1061,
+    "timestamp" : "1764186203882",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[T]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1062,
+    "timestamp" : "1764186205329",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "T",
+    "current_text" : "[Th]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1063,
+    "timestamp" : "1764186205777",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Th",
+    "current_text" : "[Thi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1064,
+    "timestamp" : "1764186206155",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Thi",
+    "current_text" : "[This]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1065,
+    "timestamp" : "1764186206705",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This",
+    "current_text" : "[This ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1066,
+    "timestamp" : "1764186207557",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This ",
+    "current_text" : "[This s]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1067,
+    "timestamp" : "1764186207726",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This s",
+    "current_text" : "[This se]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1068,
+    "timestamp" : "1764186208576",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence",
+    "current_text" : "[This sentence ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1069,
+    "timestamp" : "1764186209448",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence ",
+    "current_text" : "[This sentence u]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1070,
+    "timestamp" : "1764186209886",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence u",
+    "current_text" : "[This sentence us]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1071,
+    "timestamp" : "1764186210075",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence us",
+    "current_text" : "[This sentence use]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1072,
+    "timestamp" : "1764186210345",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence use",
+    "current_text" : "[This sentence uses]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1073,
+    "timestamp" : "1764186211235",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses",
+    "current_text" : "[This sentence uses ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1074,
+    "timestamp" : "1764186212304",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses ",
+    "current_text" : "[This sentence uses p]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1075,
+    "timestamp" : "1764186212730",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses p",
+    "current_text" : "[This sentence uses pr]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1076,
+    "timestamp" : "1764186212918",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses pr",
+    "current_text" : "[This sentence uses pre]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1077,
+    "timestamp" : "1764186213254",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses pre",
+    "current_text" : "[This sentence uses pred]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1078,
+    "timestamp" : "1764186214168",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses predictive",
+    "current_text" : "[This sentence uses predictive ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1079,
+    "timestamp" : "1764186214984",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "This sentence uses predictive text",
+    "current_text" : "[This sentence uses predictive text ]",
+    "is_password" : 0
+  }
+]

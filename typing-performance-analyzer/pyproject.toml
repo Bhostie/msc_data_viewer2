@@ -1,0 +1,10 @@
+[project]
+name = "performance-analyzer"
+version = "1.0.0"
+description = "A Python project that analyzes the performance of a given typing sequence"
+authors = [{ name = "Elgin Akpınar", email = "elgin.akpinar@metu.edu.tr" }]
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+package-dir = {"" = "performance_analyzer"}

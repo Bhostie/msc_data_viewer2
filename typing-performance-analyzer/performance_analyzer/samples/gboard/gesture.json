@@ -1,0 +1,110 @@
+[
+  {
+    "_id" : 2098,
+    "timestamp" : "1764187386497",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[Hiç]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2099,
+    "timestamp" : "1764187387922",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç",
+    "current_text" : "[Hiç ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2100,
+    "timestamp" : "1764187389841",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç ",
+    "current_text" : "[Hiç bir]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2101,
+    "timestamp" : "1764187390685",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir",
+    "current_text" : "[Hiç bir ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2102,
+    "timestamp" : "1764187392791",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir ",
+    "current_text" : "[Hiç bir kelime]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2103,
+    "timestamp" : "1764187393720",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime",
+    "current_text" : "[Hiç bir kelime ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2104,
+    "timestamp" : "1764187395986",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime ",
+    "current_text" : "[Hiç bir kelime tek]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2105,
+    "timestamp" : "1764187397141",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime tek",
+    "current_text" : "[Hiç bir kelime tek ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2106,
+    "timestamp" : "1764187398263",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime tek ",
+    "current_text" : "[Hiç bir kelime tek tek]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2107,
+    "timestamp" : "1764187399249",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime tek tek",
+    "current_text" : "[Hiç bir kelime tek tek ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2108,
+    "timestamp" : "1764187402080",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime tek tek ",
+    "current_text" : "[Hiç bir kelime tek tek yazılması]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 2109,
+    "timestamp" : "1764187403814",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Hiç bir kelime tek tek yazılma",
+    "current_text" : "[Hiç bir kelime tek tek yazılmadı ]",
+    "is_password" : 0
+  }
+]

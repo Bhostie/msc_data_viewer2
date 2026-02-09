@@ -1,0 +1,551 @@
+[
+  {
+    "_id" : 1084,
+    "timestamp" : "1764186242624",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[A]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1085,
+    "timestamp" : "1764186243401",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A",
+    "current_text" : "[A ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1086,
+    "timestamp" : "1764186243827",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A ",
+    "current_text" : "[A t]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1087,
+    "timestamp" : "1764186244002",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A t",
+    "current_text" : "[A ty]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1088,
+    "timestamp" : "1764186244654",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A ty",
+    "current_text" : "[A typ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1089,
+    "timestamp" : "1764186245381",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typ",
+    "current_text" : "[A typi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1090,
+    "timestamp" : "1764186245850",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typi",
+    "current_text" : "[A typi ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1091,
+    "timestamp" : "1764186247330",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typi ",
+    "current_text" : "[A typi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1092,
+    "timestamp" : "1764186247546",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typi",
+    "current_text" : "[A typ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1093,
+    "timestamp" : "1764186248312",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typ",
+    "current_text" : "[A typo]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1094,
+    "timestamp" : "1764186248695",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo",
+    "current_text" : "[A typo ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1095,
+    "timestamp" : "1764186249304",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo ",
+    "current_text" : "[A typo w]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1096,
+    "timestamp" : "1764186249542",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo w",
+    "current_text" : "[A typo wa]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1097,
+    "timestamp" : "1764186250424",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo wa",
+    "current_text" : "[A typo wad]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1098,
+    "timestamp" : "1764186251109",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo wad",
+    "current_text" : "[A typo wad ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1099,
+    "timestamp" : "1764186251790",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo wad ",
+    "current_text" : "[A typo wad]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1100,
+    "timestamp" : "1764186251954",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo wad",
+    "current_text" : "[A typo wa]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1101,
+    "timestamp" : "1764186252694",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo wa",
+    "current_text" : "[A typo was]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1102,
+    "timestamp" : "1764186253115",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was",
+    "current_text" : "[A typo was ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1103,
+    "timestamp" : "1764186253796",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was ",
+    "current_text" : "[A typo was c]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1104,
+    "timestamp" : "1764186254471",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was c",
+    "current_text" : "[A typo was co]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1105,
+    "timestamp" : "1764186254777",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was co",
+    "current_text" : "[A typo was cor]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1106,
+    "timestamp" : "1764186254949",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was cor",
+    "current_text" : "[A typo was corr]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1107,
+    "timestamp" : "1764186255116",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corr",
+    "current_text" : "[A typo was corre]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1108,
+    "timestamp" : "1764186255838",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corre",
+    "current_text" : "[A typo was correv]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1109,
+    "timestamp" : "1764186256354",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correv",
+    "current_text" : "[A typo was correvt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1110,
+    "timestamp" : "1764186256661",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correvt",
+    "current_text" : "[A typo was correvte]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1111,
+    "timestamp" : "1764186257000",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correvte",
+    "current_text" : "[A typo was correvted]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1112,
+    "timestamp" : "1764186257684",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correvted",
+    "current_text" : "[A typo was correvte]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1113,
+    "timestamp" : "1764186257839",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correvte",
+    "current_text" : "[A typo was correvt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1114,
+    "timestamp" : "1764186258014",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correvt",
+    "current_text" : "[A typo was correv]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1115,
+    "timestamp" : "1764186258202",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correv",
+    "current_text" : "[A typo was corre]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1116,
+    "timestamp" : "1764186258929",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corre",
+    "current_text" : "[A typo was correc]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1117,
+    "timestamp" : "1764186259245",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correc",
+    "current_text" : "[A typo was correct]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1118,
+    "timestamp" : "1764186259537",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correct",
+    "current_text" : "[A typo was correcte]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1119,
+    "timestamp" : "1764186259662",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was correcte",
+    "current_text" : "[A typo was corrected]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1120,
+    "timestamp" : "1764186260078",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected",
+    "current_text" : "[A typo was corrected ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1121,
+    "timestamp" : "1764186260501",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected ",
+    "current_text" : "[A typo was corrected i]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1122,
+    "timestamp" : "1764186260833",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected i",
+    "current_text" : "[A typo was corrected in]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1123,
+    "timestamp" : "1764186261079",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in",
+    "current_text" : "[A typo was corrected in ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1124,
+    "timestamp" : "1764186261453",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in ",
+    "current_text" : "[A typo was corrected in t]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1125,
+    "timestamp" : "1764186261947",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in t",
+    "current_text" : "[A typo was corrected in th]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1126,
+    "timestamp" : "1764186262357",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in th",
+    "current_text" : "[A typo was corrected in thi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1127,
+    "timestamp" : "1764186263756",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in thi",
+    "current_text" : "[A typo was corrected in this]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1128,
+    "timestamp" : "1764186264202",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this",
+    "current_text" : "[A typo was corrected in this ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1129,
+    "timestamp" : "1764186264802",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this ",
+    "current_text" : "[A typo was corrected in this s]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1130,
+    "timestamp" : "1764186264916",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this s",
+    "current_text" : "[A typo was corrected in this se]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1131,
+    "timestamp" : "1764186266641",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this se",
+    "current_text" : "[A typo was corrected in this sem]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1132,
+    "timestamp" : "1764186267158",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sem",
+    "current_text" : "[A typo was corrected in this semt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1133,
+    "timestamp" : "1764186267450",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this semt",
+    "current_text" : "[A typo was corrected in this semte]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1134,
+    "timestamp" : "1764186268527",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this semte",
+    "current_text" : "[A typo was corrected in this semten]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1135,
+    "timestamp" : "1764186270373",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this semten",
+    "current_text" : "[A typo was corrected in this semte]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1136,
+    "timestamp" : "1764186270565",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this semte",
+    "current_text" : "[A typo was corrected in this semt]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1137,
+    "timestamp" : "1764186270714",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this semt",
+    "current_text" : "[A typo was corrected in this sem]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1138,
+    "timestamp" : "1764186270909",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sem",
+    "current_text" : "[A typo was corrected in this se]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1139,
+    "timestamp" : "1764186271996",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this se",
+    "current_text" : "[A typo was corrected in this sen]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1140,
+    "timestamp" : "1764186272579",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sen",
+    "current_text" : "[A typo was corrected in this sent]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1141,
+    "timestamp" : "1764186272747",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sent",
+    "current_text" : "[A typo was corrected in this sente]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1142,
+    "timestamp" : "1764186273862",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sente",
+    "current_text" : "[A typo was corrected in this senten]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1143,
+    "timestamp" : "1764186274157",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this senten",
+    "current_text" : "[A typo was corrected in this sentenc]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1144,
+    "timestamp" : "1764186274402",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "A typo was corrected in this sentenc",
+    "current_text" : "[A typo was corrected in this sentence]",
+    "is_password" : 0
+  }
+]

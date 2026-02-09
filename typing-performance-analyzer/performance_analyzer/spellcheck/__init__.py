@@ -1,0 +1,1 @@
+from performance_analyzer.spellcheck._spellchecker import SpellChecker

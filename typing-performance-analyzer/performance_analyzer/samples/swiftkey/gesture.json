@@ -1,0 +1,83 @@
+[
+  {
+    "_id" : 1481,
+    "timestamp" : "1764186622585",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[Huh]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1482,
+    "timestamp" : "1764186624027",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh",
+    "current_text" : "[Huh ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1483,
+    "timestamp" : "1764186626756",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh ",
+    "current_text" : "[Huh this]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1484,
+    "timestamp" : "1764186627526",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this",
+    "current_text" : "[Huh this ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1485,
+    "timestamp" : "1764186628806",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this ",
+    "current_text" : "[Huh this is]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1486,
+    "timestamp" : "1764186629597",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this is",
+    "current_text" : "[Huh this is ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1487,
+    "timestamp" : "1764186630343",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this is ",
+    "current_text" : "[Huh this is by]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1488,
+    "timestamp" : "1764186631097",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this is by",
+    "current_text" : "[Huh this is by ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1489,
+    "timestamp" : "1764186633375",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Huh this is by ",
+    "current_text" : "[Huh this is by gestures]",
+    "is_password" : 0
+  }
+]

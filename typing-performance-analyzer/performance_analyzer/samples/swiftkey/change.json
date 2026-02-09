@@ -1,0 +1,362 @@
+[
+  {
+    "_id" : 1180,
+    "timestamp" : "1764186306440",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "",
+    "current_text" : "[T]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1181,
+    "timestamp" : "1764186307020",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "T",
+    "current_text" : "[Th]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1182,
+    "timestamp" : "1764186307213",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "Th",
+    "current_text" : "[The]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1183,
+    "timestamp" : "1764186307370",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The",
+    "current_text" : "[The ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1184,
+    "timestamp" : "1764186307687",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The ",
+    "current_text" : "[The t]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1185,
+    "timestamp" : "1764186307827",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The t",
+    "current_text" : "[The ty]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1186,
+    "timestamp" : "1764186308343",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The ty",
+    "current_text" : "[The typ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1187,
+    "timestamp" : "1764186308942",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The typ",
+    "current_text" : "[The type]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1188,
+    "timestamp" : "1764186309141",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The type",
+    "current_text" : "[The typer]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1189,
+    "timestamp" : "1764186310107",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The typer",
+    "current_text" : "[The type]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1190,
+    "timestamp" : "1764186310265",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The type",
+    "current_text" : "[The typ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1191,
+    "timestamp" : "1764186310438",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The typ",
+    "current_text" : "[The ty]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1192,
+    "timestamp" : "1764186310584",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The ty",
+    "current_text" : "[The t]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1193,
+    "timestamp" : "1764186310783",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The t",
+    "current_text" : "[The ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1194,
+    "timestamp" : "1764186311582",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The ",
+    "current_text" : "[The u]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1195,
+    "timestamp" : "1764186312005",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The u",
+    "current_text" : "[The us]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1196,
+    "timestamp" : "1764186312172",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The us",
+    "current_text" : "[The use]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1197,
+    "timestamp" : "1764186312323",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The use",
+    "current_text" : "[The user]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1198,
+    "timestamp" : "1764186312781",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user",
+    "current_text" : "[The user ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1199,
+    "timestamp" : "1764186313267",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user ",
+    "current_text" : "[The user c]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1200,
+    "timestamp" : "1764186313601",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user c",
+    "current_text" : "[The user ch]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1201,
+    "timestamp" : "1764186313949",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user ch",
+    "current_text" : "[The user cha]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1202,
+    "timestamp" : "1764186314481",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user cha",
+    "current_text" : "[The user chan]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1203,
+    "timestamp" : "1764186314916",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user chan",
+    "current_text" : "[The user chang]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1204,
+    "timestamp" : "1764186315326",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user chang",
+    "current_text" : "[The user change]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1205,
+    "timestamp" : "1764186315569",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user change",
+    "current_text" : "[The user changed]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1206,
+    "timestamp" : "1764186316037",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed",
+    "current_text" : "[The user changed ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1207,
+    "timestamp" : "1764186316641",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed ",
+    "current_text" : "[The user changed h]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1208,
+    "timestamp" : "1764186316830",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed h",
+    "current_text" : "[The user changed hi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1209,
+    "timestamp" : "1764186317349",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed hi",
+    "current_text" : "[The user changed his]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1210,
+    "timestamp" : "1764186318772",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed his",
+    "current_text" : "[The user changed hi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1211,
+    "timestamp" : "1764186319417",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed hi",
+    "current_text" : "[The user changed h]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1212,
+    "timestamp" : "1764186320142",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed h",
+    "current_text" : "[The user changed he]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1213,
+    "timestamp" : "1764186320289",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed he",
+    "current_text" : "[The user changed her]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1214,
+    "timestamp" : "1764186321047",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her",
+    "current_text" : "[The user changed her ]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1215,
+    "timestamp" : "1764186321561",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her ",
+    "current_text" : "[The user changed her m]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1216,
+    "timestamp" : "1764186321881",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her m",
+    "current_text" : "[The user changed her mi]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1217,
+    "timestamp" : "1764186322260",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her mi",
+    "current_text" : "[The user changed her min]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1218,
+    "timestamp" : "1764186322782",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her min",
+    "current_text" : "[The user changed her mind]",
+    "is_password" : 0
+  },
+  {
+    "_id" : 1219,
+    "timestamp" : "1764186324477",
+    "device_id" : "4daac81b-fa00-4796-8aaf-6be83de9f9a9",
+    "package_name" : "com.whatsapp",
+    "before_text" : "The user changed her mind",
+    "current_text" : "[The user changed her mind ]",
+    "is_password" : 0
+  }
+]
