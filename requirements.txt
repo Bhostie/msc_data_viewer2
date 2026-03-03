@@ -3,3 +3,8 @@ pandas==2.3.3
 numpy==1.26.2
 Werkzeug==3.0.1
 pytest==7.4.3
+
+# Optional: required for full typing path analysis (corrections/revisions detection)
+# If missing, speed & error-rate metrics still work; only path analysis is skipped.
+phunspell==0.1.6
+nltk==3.9.2

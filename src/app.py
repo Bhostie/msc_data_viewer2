@@ -20,18 +20,26 @@ from werkzeug.utils import secure_filename
 from database import list_tables, table_columns, detect_keyboard_table, detect_pk_column, guess_columns
 from segmentation import segment_keystrokes
 from utils import ms_to_local_str, save_segments_cache, load_segments_cache
+from analyzer import analyze_deleted_segments, save_analysis_report
 
-app = Flask(__name__)
+# Resolve project root (one level up from src/)
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+app = Flask(__name__,
+            template_folder=os.path.join(PROJECT_ROOT, 'templates'),
+            static_folder=os.path.join(PROJECT_ROOT, 'static'))
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
-app.config['UPLOAD_FOLDER'] = 'data/uploads'
-app.config['FILTERED_FOLDER'] = 'data/filtered'
-app.config['CACHE_FOLDER'] = 'data/cache'
+app.config['UPLOAD_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/uploads')
+app.config['FILTERED_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/filtered')
+app.config['CACHE_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/cache')
+app.config['ANALYSIS_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/analysis')
 app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024  # 500MB max file size
 
 # Ensure directories exist
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 os.makedirs(app.config['FILTERED_FOLDER'], exist_ok=True)
 os.makedirs(app.config['CACHE_FOLDER'], exist_ok=True)
+os.makedirs(app.config['ANALYSIS_FOLDER'], exist_ok=True)
 
 ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
 
@@ -430,6 +438,17 @@ def download_filtered_db():
                 dst_conn.commit()
         
         kept_segments = len(segments) - len(deleted_ids)
+        
+        # Run typing performance analysis on deleted segments before they're lost
+        if deleted_ids and table:
+            try:
+                report = analyze_deleted_segments(db_path, table, mapping, segments, deleted_ids)
+                analysis_path = save_analysis_report(report, app.config['ANALYSIS_FOLDER'])
+                session['analysis_path'] = analysis_path
+                print(f"Typing analysis saved: {len(deleted_ids)} deleted segments analyzed")
+            except Exception as ae:
+                print(f"Warning: Typing analysis failed: {ae}")
+        
         # Return the file for download
         return send_file(filtered_db_path, as_attachment=True, download_name='keyboard-filtered.db')
         
@@ -515,7 +534,20 @@ def save_filtered():
                 dst_conn.commit()
         
         kept_segments = len(segments) - len(deleted_ids)
-        flash(f'Successfully saved filtered database with {kept_segments} segments ({len(keep_row_ids)} rows)', 'success')
+        
+        # Run typing performance analysis on deleted segments before they're lost
+        analysis_msg = ''
+        if deleted_ids and table:
+            try:
+                report = analyze_deleted_segments(db_path, table, mapping, segments, deleted_ids)
+                analysis_path = save_analysis_report(report, app.config['ANALYSIS_FOLDER'])
+                session['analysis_path'] = analysis_path
+                analysis_msg = f' Typing analysis saved for {len(deleted_ids)} deleted segments.'
+            except Exception as ae:
+                print(f"Warning: Typing analysis failed: {ae}")
+                analysis_msg = ' (Typing analysis failed — see server logs)'
+        
+        flash(f'Successfully saved filtered database with {kept_segments} segments ({len(keep_row_ids)} rows).{analysis_msg}', 'success')
         session['filtered_db_path'] = filtered_db_path
         
     except Exception as e:
@@ -533,6 +565,17 @@ def download_filtered():
         return redirect(url_for('index'))
     
     return send_file(filtered_path, as_attachment=True, download_name='keyboard-filtered.db')
+
+@app.route('/download_analysis')
+def download_analysis():
+    """Download the typing performance analysis report for deleted segments."""
+    analysis_path = session.get('analysis_path')
+    
+    if not analysis_path or not os.path.exists(analysis_path):
+        flash('No analysis report available. Analysis is generated when you save/download a filtered database with deleted segments.', 'info')
+        return redirect(url_for('index'))
+    
+    return send_file(analysis_path, as_attachment=True, download_name='typing-analysis.json')
 
 @app.route('/get_keystrokes/<int:segment_idx>')
 def get_keystrokes(segment_idx):

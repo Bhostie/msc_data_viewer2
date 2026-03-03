@@ -19,7 +19,7 @@ echo "📚 Installing dependencies..."
 ./.venv/bin/pip install -q -r requirements.txt
 
 # Create data directories if they don't exist
-mkdir -p data/uploads data/filtered
+mkdir -p data/uploads data/filtered data/analysis
 
 # Run the Flask app
 echo "✅ Starting Flask server..."
@@ -29,4 +29,5 @@ echo ""
 echo "Press Ctrl+C to stop the server"
 echo ""
 
-./.venv/bin/python app.py
+cd src
+./../.venv/bin/python app.py

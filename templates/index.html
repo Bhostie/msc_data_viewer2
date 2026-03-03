@@ -125,6 +125,12 @@
                                     <i class="bi bi-arrow-counterclockwise"></i> Clear Marks
                                 </button>
                             </span>
+
+                            {% if session.get('analysis_path') %}
+                            <a href="{{ url_for('download_analysis') }}" class="btn btn-outline-primary btn-sm ms-2">
+                                <i class="bi bi-file-earmark-bar-graph"></i> Download Typing Analysis
+                            </a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
