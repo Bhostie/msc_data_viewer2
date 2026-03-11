@@ -575,7 +575,7 @@ def download_analysis():
         flash('No analysis report available. Analysis is generated when you save/download a filtered database with deleted segments.', 'info')
         return redirect(url_for('index'))
     
-    return send_file(analysis_path, as_attachment=True, download_name='typing-analysis.json')
+    return send_file(analysis_path, as_attachment=True, download_name=os.path.basename(analysis_path))
 
 @app.route('/get_keystrokes/<int:segment_idx>')
 def get_keystrokes(segment_idx):

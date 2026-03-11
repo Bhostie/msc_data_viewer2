@@ -45,9 +45,9 @@ def _rows_to_analyzer_sequence(rows: List[Dict[str, Any]], mapping: Dict[str, Op
     text_col = mapping.get('text')
     pkg_col = mapping.get('package')
 
-    # Detect before_text column
-    before_text_col = None
-    if rows:
+    # Detect before_text column: prefer mapping, fall back to sniffing row keys
+    before_text_col = mapping.get('before_text')
+    if not before_text_col and rows:
         for col_name in ['before_text', 'before', 'previous_text']:
             if col_name in rows[0]:
                 before_text_col = col_name
@@ -118,7 +118,8 @@ def analyze_segment(rows: List[Dict[str, Any]], mapping: Dict[str, Optional[str]
         result['wpm'] = round(speed_calc.wpm(interrupted_time=0), 2)
         result['ksps'] = round(speed_calc.ksps(interrupted_time=0), 2)
         result['duration_seconds'] = round(speed_calc.get_duration(), 2)
-        result['final_text'] = speed_calc.get_final_text()
+        # Store only the length — not the actual text (deleted for privacy)
+        result['final_text_length'] = len(speed_calc.get_final_text())
     except Exception as e:
         result['speed_error'] = str(e)
 
@@ -201,7 +202,7 @@ def analyze_deleted_segments(
 
         # Fetch raw rows for this segment
         placeholders = ",".join("?" for _ in row_ids)
-        query = f'SELECT * FROM "{table}" WHERE {pk_col} IN ({placeholders}) ORDER BY {ts_col}'
+        query = f'SELECT * FROM "{table}" WHERE "{pk_col}" IN ({placeholders}) ORDER BY "{ts_col}"'
         cursor = conn.execute(query, row_ids)
         col_names = [desc[0] for desc in cursor.description]
         raw_rows = [dict(zip(col_names, row)) for row in cursor.fetchall()]
@@ -270,9 +271,14 @@ def analyze_deleted_segments(
 
 
 def save_analysis_report(report: Dict[str, Any], output_folder: str) -> str:
-    """Save the analysis report as a JSON file. Returns the file path."""
+    """Save the analysis report as a JSON file with a unique name. Returns the file path."""
     os.makedirs(output_folder, exist_ok=True)
-    filepath = os.path.join(output_folder, 'typing-analysis.json')
+    # Include database name and timestamp to avoid overwriting previous reports
+    db_name = report.get('database', 'unknown').replace('.db', '')
+    now = datetime.now(tz=ISTANBUL_TZ)
+    timestamp_str = now.strftime('%Y%m%d_%H%M%S')
+    filename = f'typing-analysis_{db_name}_{timestamp_str}.json'
+    filepath = os.path.join(output_folder, filename)
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
     return filepath
