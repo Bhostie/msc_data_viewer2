@@ -1,0 +1,70 @@
+{
+  "$schema": "https://opencode.ai/config.schema.json",
+  "provider": "anthropic",
+  "model": "claude-sonnet-4-20250514",
+  "agents": {
+    "researcher": {
+      "file": ".opencode/agents/researcher.md",
+      "description": "MSc thesis methodology lead — HCI, data science, research design",
+      "model": "claude-sonnet-4-20250514"
+    },
+    "coder": {
+      "file": ".opencode/agents/coder.md",
+      "description": "Python engineer — implementation, data science, ML, statistics",
+      "model": "claude-sonnet-4-20250514"
+    },
+    "reviewer": {
+      "file": ".opencode/agents/reviewer.md",
+      "description": "Code reviewer — QA, testing, security, pre/post review",
+      "model": "claude-sonnet-4-20250514"
+    }
+  },
+  "mcp": {
+    "servers": {
+      "filesystem": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-filesystem",
+          "."
+        ],
+        "description": "File system operations — read, write, search, list files"
+      },
+      "sqlite": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@anthropic/mcp-server-sqlite",
+          "--db-path",
+          "data/uploads"
+        ],
+        "description": "SQLite database inspection — query AWARE keystroke databases directly"
+      },
+      "memory": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ],
+        "description": "Persistent knowledge graph — store research notes, decisions, context across sessions"
+      },
+      "fetch": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-fetch"
+        ],
+        "description": "Web fetching — look up papers, documentation, API references"
+      },
+      "sequential-thinking": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ],
+        "description": "Step-by-step reasoning — for complex methodology decisions and algorithm design"
+      }
+    }
+  },
+  "instructions": "This is an MSc thesis project: AWARE Keyboard Viewer. A Flask web app for viewing, segmenting, and cleaning AWARE Framework keyboard keystroke logs stored in SQLite databases. See .github/copilot-instructions.md for full architecture docs and algorithm.pseudocode.md for the segmentation algorithm. Never modify old_code.py."
+}
