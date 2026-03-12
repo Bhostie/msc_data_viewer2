@@ -25,6 +25,13 @@ if _ANALYZER_PARENT not in sys.path:
 ISTANBUL_TZ = ZoneInfo("Europe/Istanbul")
 
 
+def _censor_text(text: str) -> str:
+    """Replace text content with asterisks of the same length, preserving privacy."""
+    if not text:
+        return ''
+    return '*' * len(text)
+
+
 def _rows_to_analyzer_sequence(rows: List[Dict[str, Any]], mapping: Dict[str, Optional[str]]) -> List[Dict[str, Any]]:
     """
     Transform raw DB rows (list of dicts with actual column names) into the
@@ -144,8 +151,8 @@ def analyze_segment(rows: List[Dict[str, Any]], mapping: Dict[str, Optional[str]
             activity_info = {
                 'type': act.type.name if act.type else None,
                 'position': act.position.name if act.position else None,
-                'entered': act.entered,
-                'removed': act.removed,
+                'entered': _censor_text(act.entered) if act.entered else '',
+                'removed': _censor_text(act.removed) if act.removed else '',
             }
             if act.edit_correction is not None:
                 activity_info['edit_operation'] = act.edit_correction.name
@@ -282,3 +289,111 @@ def save_analysis_report(report: Dict[str, Any], output_folder: str) -> str:
     with open(filepath, 'w', encoding='utf-8') as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
     return filepath
+
+
+def save_analysis_to_db(report: Dict[str, Any], filtered_db_path: str) -> None:
+    """
+    Write the deleted-segment analysis into the filtered .db as two tables:
+      - deleted_segment_analysis          (one row per deleted segment)
+      - deleted_segment_analysis_summary  (single summary row)
+
+    All message text is already censored upstream; only metrics are stored.
+    """
+    conn = sqlite3.connect(filtered_db_path)
+
+    # --- per-segment table ---
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS deleted_segment_analysis (
+            segment_index       INTEGER,
+            start_time          TEXT,
+            package             TEXT,
+            label               TEXT,
+            char_count          INTEGER,
+            word_count          INTEGER,
+            keystroke_count     INTEGER,
+            wpm                 REAL,
+            ksps                REAL,
+            duration_seconds    REAL,
+            final_text_length   INTEGER,
+            kspc                REAL,
+            total_activities    INTEGER,
+            corrections         INTEGER,
+            revisions           INTEGER,
+            typing_path_json    TEXT
+        )
+    """)
+
+    for seg in report.get('segments', []):
+        metrics = seg.get('metrics', {})
+        tp = metrics.get('typing_path', {})
+        conn.execute(
+            """INSERT INTO deleted_segment_analysis
+               (segment_index, start_time, package, label, char_count, word_count,
+                keystroke_count, wpm, ksps, duration_seconds, final_text_length,
+                kspc, total_activities, corrections, revisions, typing_path_json)
+               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+            (
+                seg.get('segment_index'),
+                seg.get('start_time', ''),
+                seg.get('package', ''),
+                seg.get('label', ''),
+                seg.get('char_count', 0),
+                seg.get('word_count', 0),
+                metrics.get('keystroke_count', 0),
+                metrics.get('wpm'),
+                metrics.get('ksps'),
+                metrics.get('duration_seconds'),
+                metrics.get('final_text_length'),
+                metrics.get('kspc'),
+                tp.get('total_activities'),
+                tp.get('corrections'),
+                tp.get('revisions'),
+                json.dumps(tp.get('activities', []), ensure_ascii=False) if tp.get('activities') else None,
+            ),
+        )
+
+    # --- summary table ---
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS deleted_segment_analysis_summary (
+            generated_at            TEXT,
+            database_name           TEXT,
+            total_deleted_segments  INTEGER,
+            analyzed_segments       INTEGER,
+            segments_with_metrics   INTEGER,
+            avg_wpm                 REAL,
+            min_wpm                 REAL,
+            max_wpm                 REAL,
+            avg_ksps                REAL,
+            avg_kspc                REAL,
+            total_duration_seconds  REAL,
+            total_corrections       INTEGER,
+            total_revisions         INTEGER
+        )
+    """)
+
+    summary = report.get('summary', {})
+    conn.execute(
+        """INSERT INTO deleted_segment_analysis_summary
+           (generated_at, database_name, total_deleted_segments, analyzed_segments,
+            segments_with_metrics, avg_wpm, min_wpm, max_wpm, avg_ksps, avg_kspc,
+            total_duration_seconds, total_corrections, total_revisions)
+           VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+        (
+            report.get('generated_at', ''),
+            report.get('database', ''),
+            summary.get('total_deleted_segments', 0),
+            summary.get('analyzed_segments', 0),
+            summary.get('segments_with_metrics', 0),
+            summary.get('avg_wpm'),
+            summary.get('min_wpm'),
+            summary.get('max_wpm'),
+            summary.get('avg_ksps'),
+            summary.get('avg_kspc'),
+            summary.get('total_duration_seconds'),
+            summary.get('total_corrections'),
+            summary.get('total_revisions'),
+        ),
+    )
+
+    conn.commit()
+    conn.close()

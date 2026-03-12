@@ -20,7 +20,7 @@ from werkzeug.utils import secure_filename
 from database import list_tables, table_columns, detect_keyboard_table, detect_pk_column, guess_columns
 from segmentation import segment_keystrokes
 from utils import ms_to_local_str, save_segments_cache, load_segments_cache
-from analyzer import analyze_deleted_segments, save_analysis_report
+from analyzer import analyze_deleted_segments, save_analysis_report, save_analysis_to_db
 
 # Resolve project root (one level up from src/)
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -443,9 +443,12 @@ def download_filtered_db():
         if deleted_ids and table:
             try:
                 report = analyze_deleted_segments(db_path, table, mapping, segments, deleted_ids)
+                # Write analysis into the filtered .db as separate tables
+                save_analysis_to_db(report, filtered_db_path)
+                # Also keep the JSON report for backward compatibility
                 analysis_path = save_analysis_report(report, app.config['ANALYSIS_FOLDER'])
                 session['analysis_path'] = analysis_path
-                print(f"Typing analysis saved: {len(deleted_ids)} deleted segments analyzed")
+                print(f"Typing analysis saved: {len(deleted_ids)} deleted segments analyzed (DB table + JSON)")
             except Exception as ae:
                 print(f"Warning: Typing analysis failed: {ae}")
         
@@ -540,9 +543,12 @@ def save_filtered():
         if deleted_ids and table:
             try:
                 report = analyze_deleted_segments(db_path, table, mapping, segments, deleted_ids)
+                # Write analysis into the filtered .db as separate tables
+                save_analysis_to_db(report, filtered_db_path)
+                # Also keep the JSON report for backward compatibility
                 analysis_path = save_analysis_report(report, app.config['ANALYSIS_FOLDER'])
                 session['analysis_path'] = analysis_path
-                analysis_msg = f' Typing analysis saved for {len(deleted_ids)} deleted segments.'
+                analysis_msg = f' Typing analysis saved for {len(deleted_ids)} deleted segments (DB table + JSON).'
             except Exception as ae:
                 print(f"Warning: Typing analysis failed: {ae}")
                 analysis_msg = ' (Typing analysis failed — see server logs)'
