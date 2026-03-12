@@ -14,11 +14,16 @@ from zoneinfo import ZoneInfo
 from typing import List, Dict, Any, Optional
 
 # Add the typing-performance-analyzer to sys.path so its packages are importable
-_ANALYZER_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'typing-performance-analyzer', 'performance_analyzer'))
+if getattr(sys, 'frozen', False):
+    _BUNDLE_DIR = sys._MEIPASS  # type: ignore[attr-defined]
+else:
+    _BUNDLE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+
+_ANALYZER_ROOT = os.path.join(_BUNDLE_DIR, 'typing-performance-analyzer', 'performance_analyzer')
 if _ANALYZER_ROOT not in sys.path:
     sys.path.insert(0, _ANALYZER_ROOT)
 # Also add the parent so "from performance_analyzer..." works
-_ANALYZER_PARENT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'typing-performance-analyzer'))
+_ANALYZER_PARENT = os.path.join(_BUNDLE_DIR, 'typing-performance-analyzer')
 if _ANALYZER_PARENT not in sys.path:
     sys.path.insert(0, _ANALYZER_PARENT)
 

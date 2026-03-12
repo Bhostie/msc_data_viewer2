@@ -9,6 +9,7 @@ To run this app:
 """
 
 import os
+import sys
 import sqlite3
 import json
 import pandas as pd
@@ -22,17 +23,34 @@ from segmentation import segment_keystrokes
 from utils import ms_to_local_str, save_segments_cache, load_segments_cache
 from analyzer import analyze_deleted_segments, save_analysis_report, save_analysis_to_db
 
-# Resolve project root (one level up from src/)
-PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# -------- Path Resolution (supports both development and PyInstaller) --------
+# When frozen by PyInstaller:
+#   - BUNDLE_DIR = sys._MEIPASS (read-only, contains templates/static/src)
+#   - RUNTIME_DIR = directory containing the executable (writable, for data/)
+# When running from source:
+#   - BUNDLE_DIR = PROJECT_ROOT (one level up from src/)
+#   - RUNTIME_DIR = same as BUNDLE_DIR
+
+if getattr(sys, 'frozen', False):
+    # Running as PyInstaller bundle
+    BUNDLE_DIR = sys._MEIPASS  # type: ignore[attr-defined]
+    RUNTIME_DIR = os.path.dirname(os.path.abspath(sys.executable))
+else:
+    # Running from source (development)
+    BUNDLE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    RUNTIME_DIR = BUNDLE_DIR
+
+PROJECT_ROOT = BUNDLE_DIR  # backward compatibility
 
 app = Flask(__name__,
-            template_folder=os.path.join(PROJECT_ROOT, 'templates'),
-            static_folder=os.path.join(PROJECT_ROOT, 'static'))
+            template_folder=os.path.join(BUNDLE_DIR, 'templates'),
+            static_folder=os.path.join(BUNDLE_DIR, 'static'))
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
-app.config['UPLOAD_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/uploads')
-app.config['FILTERED_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/filtered')
-app.config['CACHE_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/cache')
-app.config['ANALYSIS_FOLDER'] = os.path.join(PROJECT_ROOT, 'data/analysis')
+# Data directories are writable => use RUNTIME_DIR (next to executable)
+app.config['UPLOAD_FOLDER'] = os.path.join(RUNTIME_DIR, 'data', 'uploads')
+app.config['FILTERED_FOLDER'] = os.path.join(RUNTIME_DIR, 'data', 'filtered')
+app.config['CACHE_FOLDER'] = os.path.join(RUNTIME_DIR, 'data', 'cache')
+app.config['ANALYSIS_FOLDER'] = os.path.join(RUNTIME_DIR, 'data', 'analysis')
 app.config['MAX_CONTENT_LENGTH'] = 500 * 1024 * 1024  # 500MB max file size
 
 # Ensure directories exist
