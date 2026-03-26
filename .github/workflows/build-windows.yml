@@ -3,9 +3,9 @@ name: Build Windows Executable
 on:
   # Manual trigger from GitHub Actions tab
   workflow_dispatch:
-  # Also build on pushes to main (optional — remove if you only want manual)
+  # Also build on pushes to desktop-app (optional — remove if you only want manual)
   push:
-    branches: [main]
+    branches: [desktop-app]
 
 jobs:
   build-windows:
