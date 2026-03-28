@@ -1,5 +1,9 @@
 import sqlite3
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Sequence
+
+# SQLite has a compile-time limit on bound parameters (default 999 on Windows).
+# We chunk IN-clause queries to stay safely under this limit.
+SQLITE_MAX_VARS = 900
 
 def list_tables(conn: sqlite3.Connection) -> List[str]:
     """List all tables in the database."""
@@ -59,3 +63,35 @@ def guess_columns(cols: List[str]) -> Dict[str, Optional[str]]:
         "action": pick("key_action", "action", "event"),
     }
     return mapping
+
+
+def select_by_ids(
+    conn: sqlite3.Connection,
+    table: str,
+    pk: str,
+    ids: Sequence,
+    columns: str = "*",
+    order_by: Optional[str] = None,
+) -> List[tuple]:
+    """SELECT rows by primary-key IDs, chunked to avoid SQLite variable limits.
+
+    Args:
+        conn:     Open SQLite connection.
+        table:    Table name.
+        pk:       Primary-key column name.
+        ids:      Sequence of row IDs to fetch.
+        columns:  Column expression for SELECT (default ``"*"``).
+        order_by: Optional ORDER BY expression (e.g. ``"timestamp"``).
+
+    Returns:
+        List of row tuples matching the given IDs.
+    """
+    all_rows: List[tuple] = []
+    ids_list = list(ids)
+    suffix = f" ORDER BY {order_by}" if order_by else ""
+    for i in range(0, len(ids_list), SQLITE_MAX_VARS):
+        chunk = ids_list[i : i + SQLITE_MAX_VARS]
+        placeholders = ",".join("?" for _ in chunk)
+        query = f'SELECT {columns} FROM "{table}" WHERE {pk} IN ({placeholders}){suffix}'
+        all_rows.extend(conn.execute(query, chunk).fetchall())
+    return all_rows

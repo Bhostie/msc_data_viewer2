@@ -18,7 +18,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash, sen
 from werkzeug.utils import secure_filename
 
 # Import modules
-from database import list_tables, table_columns, detect_keyboard_table, detect_pk_column, guess_columns
+from database import list_tables, table_columns, detect_keyboard_table, detect_pk_column, guess_columns, select_by_ids
 from segmentation import segment_keystrokes
 from utils import ms_to_local_str, save_segments_cache, load_segments_cache
 from analyzer import analyze_deleted_segments, save_analysis_report, save_analysis_to_db
@@ -435,9 +435,7 @@ def download_filtered_db():
                 columns = table_columns(src_conn, table) # type: ignore
                 col_list = ", ".join(f'"{c}"' for c in columns)
                 
-                placeholders = ",".join("?" for _ in keep_row_ids)
-                select_query = f'SELECT {col_list} FROM "{table}" WHERE {pk} IN ({placeholders})'
-                rows_to_copy = src_conn.execute(select_query, list(keep_row_ids)).fetchall()
+                rows_to_copy = select_by_ids(src_conn, table, pk, keep_row_ids, columns=col_list)
                 
                 question_marks = ",".join("?" for _ in columns)
                 insert_query = f'INSERT INTO "{table}" ({col_list}) VALUES ({question_marks})'
@@ -534,9 +532,7 @@ def save_filtered():
                 columns = table_columns(src_conn, table) # type: ignore
                 col_list = ", ".join(f'"{c}"' for c in columns)
                 
-                placeholders = ",".join("?" for _ in keep_row_ids)
-                select_query = f'SELECT {col_list} FROM "{table}" WHERE {pk} IN ({placeholders})'
-                rows_to_copy = src_conn.execute(select_query, list(keep_row_ids)).fetchall()
+                rows_to_copy = select_by_ids(src_conn, table, pk, keep_row_ids, columns=col_list)
                 
                 question_marks = ",".join("?" for _ in columns)
                 insert_query = f'INSERT INTO "{table}" ({col_list}) VALUES ({question_marks})'
@@ -632,12 +628,10 @@ def get_keystrokes(segment_idx):
         pk = mapping.get('pk', 'rowid')
         ts_col = mapping.get('timestamp', pk)
         
-        placeholders = ",".join("?" for _ in row_ids)
-        query = f'SELECT * FROM "{table}" WHERE {pk} IN ({placeholders}) ORDER BY {ts_col}'
-        cursor = conn.execute(query, row_ids)
+        rows = select_by_ids(conn, table, pk, row_ids, order_by=ts_col)
         
-        col_names = [description[0] for description in cursor.description]
-        rows = cursor.fetchall()
+        # Get column names from table schema
+        col_names = table_columns(conn, table)
         conn.close()
         
         # Convert to list of dicts

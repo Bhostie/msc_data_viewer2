@@ -13,6 +13,8 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 from typing import List, Dict, Any, Optional
 
+from database import select_by_ids
+
 # Add the typing-performance-analyzer to sys.path so its packages are importable
 if getattr(sys, 'frozen', False):
     _BUNDLE_DIR = sys._MEIPASS  # type: ignore[attr-defined]
@@ -213,11 +215,9 @@ def analyze_deleted_segments(
             continue
 
         # Fetch raw rows for this segment
-        placeholders = ",".join("?" for _ in row_ids)
-        query = f'SELECT * FROM "{table}" WHERE "{pk_col}" IN ({placeholders}) ORDER BY "{ts_col}"'
-        cursor = conn.execute(query, row_ids)
-        col_names = [desc[0] for desc in cursor.description]
-        raw_rows = [dict(zip(col_names, row)) for row in cursor.fetchall()]
+        rows = select_by_ids(conn, table, f'"{pk_col}"', row_ids, order_by=f'"{ts_col}"')
+        col_names = [desc[0] for desc in conn.execute(f'SELECT * FROM "{table}" LIMIT 0').description]
+        raw_rows = [dict(zip(col_names, row)) for row in rows]
 
         if not raw_rows:
             continue
